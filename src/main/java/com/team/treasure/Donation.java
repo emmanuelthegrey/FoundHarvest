@@ -9,23 +9,37 @@ public class Donation {
 	private String productDescription;
 	private int itemQuantity;
 	private LocalDate expirationDate;
-
+	private String status;
+	
 	// calc method
 	// private String category;
 	// private String dateSubmission;
 	// private String daysGood;
 	// private String readyPickup;
 	// private String pickupTime;
-	// private String status;
+	
 	// private String storageLocation;
 
-	public Donation(String submissionID, String address, String productDescription, int itemQuantity,
-			LocalDate expirationDate) {
-		this.nameOfDonor = submissionID;
-		this.address = address;
-		this.productDescription = productDescription;
-		this.itemQuantity = itemQuantity;
-		this.expirationDate = expirationDate;
+	public Donation(){
+		super();
+	}
+	
+
+	public String getNameOfDonor() {
+		return nameOfDonor;
+	}
+
+	public void setNameOfDonor(String nameOfDonor) {
+		this.nameOfDonor = nameOfDonor;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getSubmissionID() {
