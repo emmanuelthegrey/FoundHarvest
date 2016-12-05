@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Donation {
 
-	private String nameOfDonor;
+	private String nameOfCompany;
 	private String address;
 	private String productDescription;
 	private int itemQuantity;
@@ -25,12 +25,12 @@ public class Donation {
 	}
 	
 
-	public String getNameOfDonor() {
-		return nameOfDonor;
+	public String getNameOfCompany() {
+		return nameOfCompany;
 	}
 
-	public void setNameOfDonor(String nameOfDonor) {
-		this.nameOfDonor = nameOfDonor;
+	public void setNameOfCompany(String nameOfCompany) {
+		this.nameOfCompany = nameOfCompany;
 	}
 
 
@@ -42,13 +42,6 @@ public class Donation {
 		this.status = status;
 	}
 
-	public String getSubmissionID() {
-		return nameOfDonor;
-	}
-
-	public void setSubmissionID(String submissionID) {
-		this.nameOfDonor = submissionID;
-	}
 
 	public String getAddress() {
 		return address;
