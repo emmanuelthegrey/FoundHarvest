@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.team.treasure" table="companyProfile">
+   <id name="idCompanyProfile" column="idCompanyProfile" type="int">
+       <generator class="increment"></generator>
+   </id>
+   <property name="companyName" column="companyName" type="string"></property>
+   <property name="address" column="address" type="string"></property>
+   <property name="mainContact" column="mainContact" type="string"></property>
+   <property name="companyPhoneNumber" column="companyPhoneNumber" type="string"></property>
+   <property name="email" column="email" type="string"></property>
+   <property name="twitterName" column="twitterName" type="string"></property>
+   <property name="mobileNumber" column="mobileNumber" type="string"></property>
+  
+</class>
+</hibernate-mapping>

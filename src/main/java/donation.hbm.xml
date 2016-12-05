@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.team.treasure.Donation" table="companydonation">
+		<id name="rank" column="Rank" type="int">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="nameOfCompany" column="nameOfCompany" type="string"></property>
+		<property name="address" column="addres" type="string"></property>
+		<property name="productDescription" column="productDescription" type="string"></property>
+		<property name="itemQuantity" column="itemQuantity" type="int"></property>
+		<property name="expirationDate" column="experirationDate" type="LocalDate"></property>
+		<property name="status" column="status" type="string"></property>
+		
+	</class>
+</hibernate-mapping>
