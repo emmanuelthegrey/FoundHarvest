@@ -1,0 +1,16 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>Login Form</title>
+</head>
+<body>
+
+<form name="loginForm" action="./" method ="GET">
+	<h1>Log in</h1>
+	<input type="text" name="username" placeholder="User name" required><br>
+	<input type="password" name="password" placeholder="Password" required><br>
+	<input type="submit" value ="Login">
+</form>
+</body>
+</html>
