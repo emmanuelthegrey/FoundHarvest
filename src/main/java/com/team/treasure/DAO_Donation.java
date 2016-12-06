@@ -59,7 +59,7 @@ package com.team.treasure;
 				setupFactory();
 			Session hibernateSession = factory.openSession();
 			hibernateSession.getTransaction().begin();
-			List<Donation> donation = hibernateSession.createQuery("FROM companydonation").list();
+			List<Donation> donation = hibernateSession.createQuery("FROM Donation").list();
 			hibernateSession.getTransaction().commit();
 			hibernateSession.close();
 
