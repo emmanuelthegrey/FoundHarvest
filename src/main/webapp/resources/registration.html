@@ -2,9 +2,40 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Registration</title>
 </head>
 <body>
+<script>
+function validateForm() {
+    var x = document.forms["DonationForm"]["nameOfCompany"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+ onsubmit="return validateForm()" 
+</script>
+
+	<h1>Create Found Harvest User Account</h1>
+	<form name="DonationForm" action="../" method="post">
+		Company Name: <input type="text" name="nameOfCompany"> 
+		<br>
+		Company Address: <input type="text" name="address">
+			<br>
+		Main Contact: <input type="text" name="contact">
+			<br>
+		Phone Number: <input type="text" name="phoneNumber">
+			<br>
+		Email: <input type="text" name="Email">
+			<br>
+		Twitter Name: <input type="text" name="Twitter">
+			<br>
+		User Name: <input type="text" name="username">
+			<br>
+		Password: <input type="text" name="password">
+			<br>
+		<input type="submit" value="Submit">
+	</form>
 
 </body>
 </html>
