@@ -9,7 +9,7 @@
 <body>
 	<h1>Registered: </h1>
 
-	<P>Thank you "${companyName } for registering"</P>
+	<P>Thank you "${companyName }" for registering</P>
 
 
 

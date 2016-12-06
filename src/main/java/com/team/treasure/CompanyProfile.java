@@ -16,19 +16,13 @@ public class CompanyProfile {
 		super();
 	}
 
-
-
 	public int getCompanyID() {
 		return companyID;
 	}
 
-
-
 	public void setCompanyID(int companyID) {
 		this.companyID = companyID;
 	}
-
-
 
 	public String getCompanyName() {
 		return companyName;

@@ -8,6 +8,7 @@ package com.team.treasure;
 	import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 	import org.hibernate.cfg.Configuration;
 	import org.hibernate.service.ServiceRegistry;
+	import org.jasypt.util.password.StrongPasswordEncryptor;
 
 	public class DAO_Profile {
 		private static SessionFactory factory;
@@ -30,6 +31,10 @@ package com.team.treasure;
 
 		
 		 public static int addCompanyProfile(CompanyProfile cp) {
+			StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+			String encrypted = passwordEncryptor.encryptPassword(cp.getPassword());
+			cp.setPassword(encrypted);
+			
 			if (factory == null)
 				setupFactory();
 			Session hibernateSession = factory.openSession();
