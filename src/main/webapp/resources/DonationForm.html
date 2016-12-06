@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Donation Form</title>
+</head>
+<body>
+	<!--   
+<script>
+function validateForm() {
+    var x = document.forms["form1"]["firstName"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+ onsubmit="return validateForm()" 
+</script> -->
+
+	<h1>Submit Donation Here</h1>
+	<form name="DonationForm" action="../submittedDonation" method="post">
+		Company Name: <input type="text" name="nameOfCompany"> <br>
+		Company Address: <input type="text" name="address">
+		<!--  <br>Publisher: <input type ="text" name = "publisher"> -->
+		<!-- <br>Sales: <input type ="text" name = "sales"> -->
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Donation {
 
+	private int idCompanyDonation;
 	private String nameOfCompany;
 	private String address;
 	private String productDescription;
@@ -24,6 +25,16 @@ public class Donation {
 		super();
 	}
 	
+
+	public int getIdCompanyDonation() {
+		return idCompanyDonation;
+	}
+
+
+	public void setIdCompanyDonation(int idCompanyDonation) {
+		this.idCompanyDonation = idCompanyDonation;
+	}
+
 
 	public String getNameOfCompany() {
 		return nameOfCompany;
