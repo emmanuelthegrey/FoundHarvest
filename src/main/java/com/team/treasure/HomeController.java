@@ -65,7 +65,7 @@ public class HomeController {
 		
 		DAO_Donation.addDonation(donation);
 		
-		model.addAttribute("nameOfCompany", request.getParameter("nameOfCompany"));
+		model.addAttribute("companyName", request.getParameter("companyName"));
 		model.addAttribute("address", request.getParameter("address"));
 		//model.addAttribute("publisher", request.getParameter("publisher"));
 		//model.addAttribute("sales", request.getParameter("sales"));
@@ -86,6 +86,41 @@ public class HomeController {
 		
 		return "deletedDonation";
 	}
+	
+	@RequestMapping(value = "/submittedRegistration", method = RequestMethod.POST)
+	public String submittedRegistration(Model model, HttpServletRequest request) {
+		//System.out.println(request.getQueryString());
+		
+		
+		CompanyProfile cp = new CompanyProfile();
+		
+		cp.setCompanyName(request.getParameter("companyName"));
+		cp.setAddress(request.getParameter("address"));
+		cp.setMainContact(request.getParameter("contact"));
+		cp.setCompanyPhoneNumber(request.getParameter("phoneNumber"));
+		cp.setEmail(request.getParameter("email"));
+		cp.setTwitterName(request.getParameter("twitter"));
+		cp.setUserName(request.getParameter("username"));
+		cp.setPassword(request.getParameter("password"));
+		
+		
+		
+		DAO_Profile.addCompanyProfile(cp);
+		
+		
+		
+		//donation.setPublisher(request.getParameter("publisher"));
+		//donation.setSales(Integer.parseInt(request.getParameter("sales")));
+		
+		
+		model.addAttribute("companyName", request.getParameter("companyName"));
+		model.addAttribute("address", request.getParameter("address"));
+		//model.addAttribute("publisher", request.getParameter("publisher"));
+		//model.addAttribute("sales", request.getParameter("sales"));
+		return "submittedRegistration";
+	}
+	
+	
 	/*
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(Model model, HttpServletRequest request) {

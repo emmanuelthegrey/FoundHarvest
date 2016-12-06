@@ -2,7 +2,7 @@ package com.team.treasure;
 
 public class CompanyProfile {
 
-	private String companyID;
+	private int companyID;
 	private String companyName;
 	private String userName;
 	private String password;	
@@ -16,13 +16,19 @@ public class CompanyProfile {
 		super();
 	}
 
-	public String getCompanyID() {
+
+
+	public int getCompanyID() {
 		return companyID;
 	}
 
-	public void setCompanyID(String companyID) {
+
+
+	public void setCompanyID(int companyID) {
 		this.companyID = companyID;
 	}
+
+
 
 	public String getCompanyName() {
 		return companyName;

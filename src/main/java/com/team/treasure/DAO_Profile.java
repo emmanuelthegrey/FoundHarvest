@@ -29,13 +29,13 @@ package com.team.treasure;
 		}
 
 		
-		 public static int addCompanyProfile(CompanyProfile b) {
+		 public static int addCompanyProfile(CompanyProfile cp) {
 			if (factory == null)
 				setupFactory();
 			Session hibernateSession = factory.openSession();
 			hibernateSession.getTransaction().begin();
 			// save this specific record
-			int i = (Integer) hibernateSession.save(b);
+			int i = (Integer) hibernateSession.save(cp);
 			hibernateSession.getTransaction().commit();
 			hibernateSession.close();
 			return i;
