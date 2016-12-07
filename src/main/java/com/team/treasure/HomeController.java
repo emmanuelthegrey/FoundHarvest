@@ -14,6 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import twitter4j.Status;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.conf.ConfigurationBuilder;
+
 /**
  * Handles requests for the application home page.
  */
@@ -193,9 +198,26 @@ public class HomeController {
 		return "login";
 	}
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
-	public String confirm(Model model, HttpServletRequest request) {
+	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
 		
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+	    
+	    
+	    cb.setDebugEnabled(true)
+	    .setOAuthConsumerKey("zbRmQD45ctlOxf1GS048INBrZ")
+	    .setOAuthConsumerSecret("MzLgQBVdnbJ74Ij2opA0CTV9k9z8wpZ0f8EvhfFQGgB2bFU56g")
+	    .setOAuthAccessToken("805785792778006528-fZ9kuMOyGEWAM8XhNYHQ4y9ymshuMTG")
+	    .setOAuthAccessTokenSecret("ZYYovl5YdK6Z3wH9364TxbM8Evr2QR77WhpnbwvAIbR4f");
+	    
+	    TwitterFactory tf = new TwitterFactory(cb.build());
+	    
+	    String tweetName = request.getParameter("tweet");
+	    
+	    twitter4j.Twitter tw = tf.getInstance();
+	    
+	    Status stat = tw.updateStatus("Thank you @" + tweetName + " !");
+	    System.out.println("Twitter updated");
 
 		return "confirm";
 	}
