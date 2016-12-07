@@ -87,6 +87,22 @@ import java.util.List;
 
             return donations;
 		}
+		public static void confirmDonation(int id){
+			if (factory == null)
+                setupFactory();
+            Session hibernateSession = factory.openSession();
+            hibernateSession.getTransaction().begin();
+			Donation donation = (hibernateSession.get(Donation.class, id));
+			donation.setStatus("complete");
+			hibernateSession.update(donation);
+            //hibernateSession.createQuery("UPDATE Donation set status = complete"
+            		//+ " where idCompanyDonation = :id").list();
+
+            hibernateSession.getTransaction().commit();
+            hibernateSession.close();
+
+            
+		}
 	}
 		/*
 		public static List<itemsForPickup> getItemsForPickup() {

@@ -192,5 +192,12 @@ public class HomeController {
 
 		return "login";
 	}
+	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
+	public String confirm(Model model, HttpServletRequest request) {
+		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
+		
 
+		return "confirm";
+	}
+	
 }

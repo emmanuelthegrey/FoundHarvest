@@ -44,13 +44,13 @@
 		
 			<td>
 			<form action="cancel" method="get">
-                <input type="hidden" name="idCompanyDonation" value="${donation.idCompanyDonation}" />
+                <input type="hidden" name="idCompanyDonation" value="${item.donation.idCompanyDonation}" />
                 <input type ="submit" value="cancel">
             </form>
             </td>
             <td>
             <form action="confirm" method="get">
-                <input type="hidden" name="idCompanyDonation" value="${donation.idCompanyDonation}" />
+                <input type="hidden" name="confirm" value="${item.donation.idCompanyDonation}" />
                 <input type="submit" value="confirm">
             </form>
             </td>
