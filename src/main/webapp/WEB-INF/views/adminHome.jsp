@@ -28,8 +28,8 @@
 <c:forEach items="${adminList}" var="donation">
 	<c:if test="${donation.status == 'ready' && donation.expirationDate < 2}">
 		<tr>
-			<td>${donation.nameOfCompany }</td>
-			<td>${donation.address }</td>
+			
+			<td>${companyName } </td>
 			<td>${donation.productDescription}</td>
 			
 			

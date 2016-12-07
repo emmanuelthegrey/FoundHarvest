@@ -76,8 +76,7 @@ public class DAO_Profile {
 		Session hibernateSession = factory.openSession();
 
 		// prepared statement to protect against injection
-		Query<CompanyProfile> sql = hibernateSession.createQuery("FROM CompanyProfile WHERE userName=:userName",
-				CompanyProfile.class);
+		Query<CompanyProfile> sql = hibernateSession.createQuery("FROM CompanyProfile WHERE userName=:userName", CompanyProfile.class);
 		sql.setParameter("userName", userName);
 		CompanyProfile companyProfile = sql.getSingleResult();
 
@@ -87,7 +86,9 @@ public class DAO_Profile {
 		} catch (Exception e) {
 			System.out.println("DEBUG: Error caught: " + e);
 		}
-
+		
+		//System.out.println(companyProfile.getCompanyName());
+		
 		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 		if (passwordEncryptor.checkPassword(password, companyProfile.getPassword())) {
 			// System.out.println("DEBUG: Password passed");

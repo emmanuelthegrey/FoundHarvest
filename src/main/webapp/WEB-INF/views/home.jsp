@@ -14,8 +14,10 @@
 	</c:if>
 	<c:if test="${user != null}">
 	${user.userName }
-	its not null!
+	You're logged in!
 	</c:if>
+	
+	<a href="./resources/DonationForm.html"> Donate! </a>
 </P>
 </body>
 </html>
