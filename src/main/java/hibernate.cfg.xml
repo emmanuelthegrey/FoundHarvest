@@ -3,17 +3,22 @@
  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory>
- <!-- Database connection settings -->
- <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
- <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/companyprofile</property>
+	<session-factory>
+		<!-- Database connection settings -->
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/companyprofile</property>
 
+<<<<<<< Updated upstream
  <property name="hibernate.connection.username">root</property>
  <property name="hibernate.connection.password">Zelda120693</property>
+=======
+		<property name="hibernate.connection.username">xxxx</property>
+		<property name="hibernate.connection.password">xxxx</property>
+>>>>>>> Stashed changes
 
- <!-- SQL dialect -->
- <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
- <!-- Specify session context -->
- <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
- </session-factory>
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- Specify session context -->
+		<property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+	</session-factory>
 </hibernate-configuration>

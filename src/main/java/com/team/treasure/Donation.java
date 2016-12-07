@@ -5,10 +5,8 @@ import java.time.LocalDate;
 public class Donation {
 
 	private int idCompanyDonation;
-	private String nameOfCompany;
-	private String address;
+	private int companyID;
 	private String productDescription;
-	private int itemQuantity;
 	private int expirationDate;
 	private String status;
 	
@@ -36,15 +34,6 @@ public class Donation {
 	}
 
 
-	public String getNameOfCompany() {
-		return nameOfCompany;
-	}
-
-	public void setNameOfCompany(String nameOfCompany) {
-		this.nameOfCompany = nameOfCompany;
-	}
-
-
 	public String getStatus() {
 		return status;
 	}
@@ -53,14 +42,15 @@ public class Donation {
 		this.status = status;
 	}
 
-
-	public String getAddress() {
-		return address;
+	public int getCompanyID() {
+		return companyID;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+
+	public void setCompanyID(int companyID) {
+		this.companyID = companyID;
 	}
+
 
 	public String getProductDescription() {
 		return productDescription;
@@ -70,13 +60,6 @@ public class Donation {
 		this.productDescription = productDescription;
 	}
 
-	public int getItemQuantity() {
-		return itemQuantity;
-	}
-
-	public void setItemQuantity(int itemQuantity) {
-		this.itemQuantity = itemQuantity;
-	}
 
 	public int getExpirationDate() {
 		return expirationDate;

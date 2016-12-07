@@ -20,7 +20,9 @@
 			
 			<th>Company Name</th> 
 			<th>Address</th> 
-			<th>product Description</th>			
+			<th>product Description</th>	
+			<th>Cancel </th>		
+			<th>Confirm </th>
 						
 		</tr>
 <c:forEach items="${adminList}" var="donation">
@@ -30,11 +32,17 @@
 			<td>${donation.address }</td>
 			<td>${donation.productDescription}</td>
 			
+			
 			<td>
-			<form action="cancel or confirm" method="get">
+			<form action="cancel" method="get">
                 <input type="hidden" name="idCompanyDonation" value="${donation.idCompanyDonation}" />
-                <input type="submit" value="cancel">
-                <input type ="submit" value="confirm">
+                <input type ="submit" value="cancel">
+            </form>
+            </td>
+            <td>
+            <form action="confirm" method="get">
+                <input type="hidden" name="idCompanyDonation" value="${donation.idCompanyDonation}" />
+                <input type="submit" value="confirm">
             </form>
             </td>
             </c:if>

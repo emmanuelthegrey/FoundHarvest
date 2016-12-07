@@ -10,10 +10,8 @@
 			<generator class="increment"></generator>
 		</id>
 		
-		<property name="nameOfCompany" column="nameOfCompany" type="string"></property>
-		<property name="address" column="address" type="string"></property>
+		<property name="companyID" column="companyID" type="int"></property>
 		<property name="productDescription" column="productDescription" type="string"></property>
-		<property name="itemQuantity" column="itemQuantity" type="int"></property>
 		<property name="expirationDate" column="expirationDate" type="int"></property>
 		<property name="status" column="status" type="string"></property>
 		
