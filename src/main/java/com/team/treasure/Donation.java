@@ -9,7 +9,7 @@ public class Donation {
 	private String address;
 	private String productDescription;
 	private int itemQuantity;
-	private LocalDate expirationDate;
+	private int expirationDate;
 	private String status;
 	
 	// calc method
@@ -78,11 +78,11 @@ public class Donation {
 		this.itemQuantity = itemQuantity;
 	}
 
-	public LocalDate getExpirationDate() {
+	public int getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(LocalDate expirationDate) {
+	public void setExpirationDate(int expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

@@ -13,29 +13,31 @@
 </head>
 <body>
 
-	<h1>Donation List</h1>
+	<h1>Upcoming Donation Pick Ups </h1>
+	<h2>Displaying Donations that expire within 1 Day </h2>
 	<table border="1">
 		<tr>
-			<th>idCompanyDonation</th>
+			
 			<th>Company Name</th> 
 			<th>Address</th> 
-			
-			<th>Delete</th>
+			<th>product Description</th>			
+						
 		</tr>
-	<c:forEach items="${DonationList}" var="donation">
-	
+<c:forEach items="${adminList}" var="donation">
+	<c:if test="${donation.status == 'ready' && donation.expirationDate < 2}">
 		<tr>
-			<!--  <td>${donation.idCompanyDonation }</td>-->
 			<td>${donation.nameOfCompany }</td>
 			<td>${donation.address }</td>
+			<td>${donation.productDescription}</td>
 			
 			<td>
-			<form action="delete" method="get">
+			<form action="cancel or confirm" method="get">
                 <input type="hidden" name="idCompanyDonation" value="${donation.idCompanyDonation}" />
-                <input type="submit" value="delete">
+                <input type="submit" value="cancel">
+                <input type ="submit" value="confirm">
             </form>
             </td>
-            
+            </c:if>
 	</c:forEach>
 	</table>
 	 

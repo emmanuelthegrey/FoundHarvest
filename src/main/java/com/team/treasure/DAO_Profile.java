@@ -64,10 +64,11 @@ package com.team.treasure;
 				setupFactory();
 			Session hibernateSession = factory.openSession();
 			hibernateSession.getTransaction().begin();
-			List<CompanyProfile> profile = hibernateSession.createQuery("FROM companyProfile").list();
+			List<CompanyProfile> profile = hibernateSession.createQuery("FROM CompanyProfile").list();
 			hibernateSession.getTransaction().commit();
 			hibernateSession.close();
 
 			return profile;
 		}
+		
 	}

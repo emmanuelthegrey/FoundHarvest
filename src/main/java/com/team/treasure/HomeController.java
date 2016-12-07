@@ -42,7 +42,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/DonationList", method = RequestMethod.GET)
 	public String DonationList(Model model) {
-		//get the list of books from the dao
 		List<Donation> donations = DAO_Donation.getAllDonations();
 		
 		//add this list to model
@@ -54,12 +53,14 @@ public class HomeController {
 	@RequestMapping(value = "/submittedDonation", method = RequestMethod.POST)
 	public String submittedDonation(Model model, HttpServletRequest request) {
 		//System.out.println(request.getQueryString());
-		
-		
 		Donation donation = new Donation();
 		donation.setNameOfCompany(request.getParameter("nameOfCompany"));
 		donation.setAddress(request.getParameter("address"));
-		//donation.setPublisher(request.getParameter("publisher"));
+		donation.setProductDescription(request.getParameter("productDescription"));
+		donation.setItemQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
+		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
+		donation.setStatus(request.getParameter("status"));
+				
 		//donation.setSales(Integer.parseInt(request.getParameter("sales")));
 		
 		DAO_Donation.addDonation(donation);
@@ -118,6 +119,16 @@ public class HomeController {
 		return "submittedRegistration";
 	}
 	
+	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
+	public String adminHome(Model model) {
+		//get the list of books from the dao
+		List<Donation> donations = DAO_Donation.getAllDonations();
+		
+		//add this list to model
+		model.addAttribute("adminList", donations);
+		
+		return "adminHome";
+	}
 	
 	/*
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
