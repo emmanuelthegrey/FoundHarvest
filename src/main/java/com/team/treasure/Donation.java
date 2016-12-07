@@ -23,6 +23,8 @@ public class Donation {
 		super();
 	}
 	
+	
+	
 
 	public int getIdCompanyDonation() {
 		return idCompanyDonation;

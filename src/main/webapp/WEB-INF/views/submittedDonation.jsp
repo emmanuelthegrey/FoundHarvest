@@ -13,9 +13,9 @@
 </head>
 <body>
 	<h1>Submitted Donation: </h1>
+	
 
-	<P>Company: "${nameOfCompany }"</P>
-	<p>Address: "${address }" </p>
+	<P>Product: "${productDescription }"</P>
 <!--  	<p>Publisher: "${publisher }" </p> -->
 <!--	<p>Sales: "${sales }" </p> -->
 	<ol>

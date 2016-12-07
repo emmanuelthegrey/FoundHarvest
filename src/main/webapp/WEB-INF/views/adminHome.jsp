@@ -19,20 +19,29 @@
 		<tr>
 			
 			<th>Company Name</th> 
+			<th>Main Contact</th>
 			<th>Address</th> 
-			<th>product Description</th>	
+			<th>Product Description</th>	
+			<th>Expiration Date</th>
+			<th>Phone Number</th>
+			<th>Email</th>
+			
 			<th>Cancel </th>		
 			<th>Confirm </th>
 						
 		</tr>
-<c:forEach items="${adminList}" var="donation">
-	<c:if test="${donation.status == 'ready' && donation.expirationDate < 2}">
+<c:forEach items="${itemList}" var="item">
+	<!-- <c:if test="${item.donation.status == 'ready' }"> -->
 		<tr>
 			
-			<td>${companyName } </td>
-			<td>${donation.productDescription}</td>
-			
-			
+			<td>${item.company.companyName }</td>
+			<td>${item.company.mainContact }</td>
+			<td>${item.company.address } </td>
+			<td>${item.donation.productDescription } </td>
+			<td>${item.donation.expirationDate }</td>
+			<td>${item.company.companyPhoneNumber }</td>
+			<td>${item.company.email } </td>
+		
 			<td>
 			<form action="cancel" method="get">
                 <input type="hidden" name="idCompanyDonation" value="${donation.idCompanyDonation}" />
@@ -45,7 +54,7 @@
                 <input type="submit" value="confirm">
             </form>
             </td>
-            </c:if>
+           <!--   </c:if>-->
 	</c:forEach>
 	</table>
 	 

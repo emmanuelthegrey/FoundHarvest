@@ -1,5 +1,6 @@
 package com.team.treasure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -60,20 +61,20 @@ public class HomeController {
 		//donation.setItemQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
 		donation.setProductDescription(request.getParameter("productDescription"));
 		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
-		donation.setStatus(request.getParameter("status"));
+		donation.setStatus("ready");
 		Cookie[] cookies = request.getCookies();
 		
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
-				donation.setCompanyID(Integer.parseInt(c.getName()));
+				donation.setCompanyID(Integer.parseInt(c.getValue()));
 			}
 		}
 		
 		DAO_Donation.addDonation(donation);
 		
 		
-		model.addAttribute("companyName", request.getParameter("companyName"));
-		model.addAttribute("address", request.getParameter("address"));
+		model.addAttribute("productDescription", request.getParameter("productDescription"));
+		//model.addAttribute("address", request.getParameter("address"));
 		//model.addAttribute("publisher", request.getParameter("publisher"));
 		//model.addAttribute("sales", request.getParameter("sales"));
 		return "submittedDonation";
@@ -139,10 +140,24 @@ public class HomeController {
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
 	public String adminHome(Model model, HttpServletRequest request) {
 		// get the list of books from the dao
-		List<Donation> donations = DAO_Donation.getAllDonations();
-
+		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+		//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
+		
+		//ArrayList<String> stuff = new ArrayList<String>();
+		
+		for (int i = 0; i < items.size(); i++) {
+			//if (i.getDonation().getStatus().equalsIgnoreCase("ready")) {
+				//stuff.add(i.getDonation().getProductDescription() + " " + i.getCompany().getCompanyName());
+			//}
+			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
+				(items.get(i).getDonation().getExpirationDate() <= 2)) {
+				items.remove(i);
+			}
+		}
+		
+		
 		// add this list to model
-		model.addAttribute("adminList", donations);
+		model.addAttribute("itemList", items);
 
 		/*
 		 * Cookie[] cookies = request.getCookies();

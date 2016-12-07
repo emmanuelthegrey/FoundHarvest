@@ -2,7 +2,8 @@ package com.team.treasure;
 
 
 
-	import java.util.List;
+	import java.util.ArrayList;
+import java.util.List;
 	import org.hibernate.Session;
 	import org.hibernate.SessionFactory;
 	import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -23,6 +24,7 @@ package com.team.treasure;
 			// modify these to match your XML files
 			configuration.configure("hibernate.cfg.xml");
 			configuration.addResource("donation.hbm.xml");
+			configuration.addResource("companyprofile.hbm.xml");
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
 			factory = configuration.buildSessionFactory(serviceRegistry);
@@ -54,17 +56,49 @@ package com.team.treasure;
 		    }
 		
 
-		public static List<Donation> getAllDonations() {
+		public static List<itemsForPickup> getAllItemsForPickup() {
 			if (factory == null)
 				setupFactory();
 			Session hibernateSession = factory.openSession();
 			hibernateSession.getTransaction().begin();
-
+			ArrayList<itemsForPickup> items = new ArrayList<itemsForPickup>();
 			List<Donation> donations = hibernateSession.createQuery("FROM Donation").list();
-
+				for (Donation d : donations) {
+					CompanyProfile company = hibernateSession.get(CompanyProfile.class, d.getCompanyID());
+					items.add(new itemsForPickup(company, d));
+				}
+				
 			hibernateSession.getTransaction().commit();
 			hibernateSession.close();
 
-			return donations;
+			return items;
+		}
+		
+		public static List<Donation> getAllDonations() {
+            if (factory == null)
+                setupFactory();
+            Session hibernateSession = factory.openSession();
+            hibernateSession.getTransaction().begin();
+
+            List<Donation> donations = hibernateSession.createQuery("FROM Donation").list();
+
+            hibernateSession.getTransaction().commit();
+            hibernateSession.close();
+
+            return donations;
 		}
 	}
+		/*
+		public static List<itemsForPickup> getItemsForPickup() {
+			if (factory == null)
+				setupFactory();
+			Session hibernateSession = factory.openSession();
+			hibernateSession.getTransaction().begin();
+			
+			List<itemsForPickup> itemsForPickup = hibernateSession.createQuery("SELECT * from Donation inner join "
+					+ "CompanyProfile ON companydonation.companyID =  " 
+					
+
+		}
+		*/
+	
