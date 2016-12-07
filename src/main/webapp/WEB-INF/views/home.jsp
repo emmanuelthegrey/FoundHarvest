@@ -9,6 +9,13 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P> <c:if test="${user == null}"> 
+	It's Null!
+	</c:if>
+	<c:if test="${user != null}">
+	${user.userName }
+	its not null!
+	</c:if>
+</P>
 </body>
 </html>
