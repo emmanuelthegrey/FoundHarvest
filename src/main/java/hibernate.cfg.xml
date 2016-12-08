@@ -8,8 +8,8 @@
 		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://foundharvest.chcxpfskci36.us-west-2.rds.amazonaws.com:3306/FoundHarvestDB</property>
 	
-		<property name="hibernate.connection.username">oliver</property>
-		<property name="hibernate.connection.password">Zelda120693</property>
+		<property name="hibernate.connection.username">xxxx</property>
+		<property name="hibernate.connection.password">xxxx</property>
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<!-- Specify session context -->
