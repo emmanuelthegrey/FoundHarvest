@@ -228,13 +228,13 @@ public class HomeController {
 			
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 	    
-	    
+	    /*
 	    cb.setDebugEnabled(true)
 	    .setOAuthConsumerKey(Props.KEY)
 	    .setOAuthConsumerSecret(Props.Secret)
         .setOAuthAccessToken(Props.Token)
 	    .setOAuthAccessTokenSecret(Props.TokenSecret);
-	    
+	    */
 	    TwitterFactory tf = new TwitterFactory(cb.build());
 	    
 	    String tweetName = request.getParameter("tweet");
