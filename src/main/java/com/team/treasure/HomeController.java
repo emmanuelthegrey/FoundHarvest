@@ -30,7 +30,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
 
 		String username = request.getParameter("username");
@@ -38,12 +38,37 @@ public class HomeController {
 
 		CompanyProfile user = DAO_Profile.checkLogin(username, password);
 		
-		if (user != null) {
-		model.addAttribute("user", user);
-		Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
-		response.addCookie(userCompanyID);
+		if ((user != null) && user.getUserName().equalsIgnoreCase("admin")){
+			Cookie adminID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			response.addCookie(adminID);
+			
+			// get the list of books from the dao
+			List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+			//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
+			
+			
+			
+			for (int i = 0; i < items.size(); i++) {
+		
+				if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
+					(items.get(i).getDonation().getExpirationDate() > 2)) {
+					items.remove(i);
+				}
+			}
+			
+			// add this list to model
+			model.addAttribute("itemList", items);	
+			return "adminHome";
 		}
-		return "home";
+		
+		if (user != null) {
+			model.addAttribute("user", user);
+			Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			response.addCookie(userCompanyID);
+			return "donationform";
+		}
+		
+		return "error";
 	}
 
 	@RequestMapping(value = "/DonationList", method = RequestMethod.GET)
@@ -163,7 +188,7 @@ public class HomeController {
 	}
 
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login(Model model, HttpServletRequest request) {
 
 		return "login";
