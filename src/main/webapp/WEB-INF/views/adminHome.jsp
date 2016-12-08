@@ -9,12 +9,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Donation List</title>
+<title>Admin Home</title>
 </head>
 <body>
 
 	<h1>Upcoming Donation Pick Ups </h1>
-	<h2>Displaying Donations that expire within 1 Day </h2>
+	<h2>Displaying Donations that expire within 2 Day </h2>
 	<table border="1">
 		<tr>
 			
@@ -44,7 +44,7 @@
 		
 			<td>
 			<form action="cancel" method="get">
-                <input type="hidden" name="idCompanyDonation" value="${item.donation.idCompanyDonation}" />
+                <input type="hidden" name="cancel" value="${item.donation.idCompanyDonation}" />
                 <input type ="submit" value="cancel">
             </form>
             </td>
@@ -52,7 +52,6 @@
             <form action="confirm" method="get">
                 <input type="hidden" name="confirm" value="${item.donation.idCompanyDonation}" />
                 <input type="hidden" name="tweet" value="${item.company.twitterName}" />
-                
                 <input type="submit" value="confirm">
             </form>
             </td>

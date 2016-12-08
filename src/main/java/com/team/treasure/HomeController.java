@@ -30,7 +30,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
 
 		String username = request.getParameter("username");
@@ -38,12 +38,37 @@ public class HomeController {
 
 		CompanyProfile user = DAO_Profile.checkLogin(username, password);
 		
-		if (user != null) {
-		model.addAttribute("user", user);
-		Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
-		response.addCookie(userCompanyID);
+		if ((user != null) && user.getUserName().equalsIgnoreCase("admin")){
+			Cookie adminID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			response.addCookie(adminID);
+			
+			// get the list of books from the dao
+			List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+			//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
+			
+			
+			
+			for (int i = 0; i < items.size(); i++) {
+		
+				if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
+					(items.get(i).getDonation().getExpirationDate() > 2)) {
+					items.remove(i);
+				}
+			}
+			
+			// add this list to model
+			model.addAttribute("itemList", items);	
+			return "adminHome";
 		}
-		return "home";
+		
+		if (user != null) {
+			model.addAttribute("user", user);
+			Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			response.addCookie(userCompanyID);
+			return "donationform";
+		}
+		
+		return "error";
 	}
 
 	@RequestMapping(value = "/DonationList", method = RequestMethod.GET)
@@ -61,9 +86,7 @@ public class HomeController {
 		//System.out.println(request.getQueryString());
 		
 		Donation donation = new Donation();
-		//donation.setNameOfCompany(request.getParameter("nameOfCompany"));
-		//donation.setAddress(request.getParameter("address"));
-		//donation.setItemQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
+	
 		donation.setProductDescription(request.getParameter("productDescription"));
 		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
 		donation.setStatus("ready");
@@ -148,55 +171,29 @@ public class HomeController {
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 		//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
 		
-		//ArrayList<String> stuff = new ArrayList<String>();
+		
 		
 		for (int i = 0; i < items.size(); i++) {
-			//if (i.getDonation().getStatus().equalsIgnoreCase("ready")) {
-				//stuff.add(i.getDonation().getProductDescription() + " " + i.getCompany().getCompanyName());
-			//}
+	
 			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
-				(items.get(i).getDonation().getExpirationDate() <= 2)) {
+				(items.get(i).getDonation().getExpirationDate() > 2)) {
 				items.remove(i);
 			}
 		}
 		
-		
 		// add this list to model
 		model.addAttribute("itemList", items);
-
-		/*
-		 * Cookie[] cookies = request.getCookies();
-		 * 
-		 * for (Cookie c : cookies) { if
-		 * (c.getName().equalsIgnoreCase("companyName")) {
-		 * model.addAttribute("companyName", c.getName()); } if
-		 * (c.getName().equalsIgnoreCase("address")) {
-		 * model.addAttribute("address", c.getName()); } if
-		 * (c.getName().equalsIgnoreCase("mainContact")) {
-		 * model.addAttribute("mainContact", c.getName()); } if
-		 * (c.getName().equalsIgnoreCase("companyPhoneNumber")) {
-		 * model.addAttribute("companyPhoneNumber", c.getName()); }
-		 * 
-		 * }
-		 */
 
 		return "adminHome";
 	}
 
-	/*
-	 * @RequestMapping(value = "/delete", method = RequestMethod.GET) public
-	 * String delete(Model model, HttpServletRequest request) {
-	 * 
-	 * DAO.deleteBook(Integer.parseInt(request.getParameter("rank")));
-	 * model.addAttribute("rank",
-	 * Integer.parseInt(request.getParameter("rank"))); return "delete"; }
-	 */
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login(Model model, HttpServletRequest request) {
 
 		return "login";
 	}
+	
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
@@ -221,5 +218,15 @@ public class HomeController {
 
 		return "confirm";
 	}
+	
+	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
+	public String cancel(Model model, HttpServletRequest request) {
+		DAO_Donation.cancelDonation(Integer.parseInt(request.getParameter("cancel")));
+		
+		
+		return "cancel";
+	}
+	
+	
 	
 }
