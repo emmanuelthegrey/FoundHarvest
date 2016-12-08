@@ -151,7 +151,7 @@ public class HomeController {
 		for (int i = 0; i < items.size(); i++) {
 	
 			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
-				(items.get(i).getDonation().getExpirationDate() <= 2)) {
+				(items.get(i).getDonation().getExpirationDate() > 2)) {
 				items.remove(i);
 			}
 		}

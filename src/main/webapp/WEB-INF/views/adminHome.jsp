@@ -9,12 +9,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Donation List</title>
+<title>Admin Home</title>
 </head>
 <body>
 
 	<h1>Upcoming Donation Pick Ups </h1>
-	<h2>Displaying Donations that expire within 1 Day </h2>
+	<h2>Displaying Donations that expire within 2 Day </h2>
 	<table border="1">
 		<tr>
 			
