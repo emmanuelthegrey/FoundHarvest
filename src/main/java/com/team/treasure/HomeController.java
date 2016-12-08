@@ -39,7 +39,7 @@ public class HomeController {
 		CompanyProfile user = DAO_Profile.checkLogin(username, password);
 		
 		if ((user != null) && user.getUserName().equalsIgnoreCase("admin")){
-			Cookie adminID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			Cookie adminID = new Cookie("admin", "" + user.getCompanyID());
 			response.addCookie(adminID);
 			
 			// get the list of books from the dao
@@ -167,14 +167,25 @@ public class HomeController {
 
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
 	public String adminHome(Model model, HttpServletRequest request) {
+		/*
+		String validateAdmin = "adminID";
+		Cookie[] cookies = request.getCookies();
+		String adminCookie = "";
+		for (Cookie c : cookies) {
+			if (c.getName().equalsIgnoreCase("adminID")) {
+				adminCookie = c.getName();
+			}
+		}
+		
+		if (validateAdmin.equalsIgnoreCase(adminCookie)) { */
 		// get the list of books from the dao
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 		//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
 		
 		
 		
+		
 		for (int i = 0; i < items.size(); i++) {
-	
 			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
 				(items.get(i).getDonation().getExpirationDate() > 2)) {
 				items.remove(i);
@@ -185,6 +196,10 @@ public class HomeController {
 		model.addAttribute("itemList", items);
 
 		return "adminHome";
+		/*}
+		else {
+			return "error";
+		} */
 	}
 
 
