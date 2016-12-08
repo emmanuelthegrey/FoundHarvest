@@ -67,8 +67,10 @@ public class HomeController {
 			response.addCookie(userCompanyID);
 			return "donationform";
 		}
-		
-		return "error";
+		if (user == null) {
+			return "error";
+		}
+		return "";
 	}
 
 	@RequestMapping(value = "/DonationList", method = RequestMethod.GET)
@@ -242,6 +244,10 @@ public class HomeController {
 		return "cancel";
 	}
 	
-	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error(Model model, HttpServletRequest request) {
+
+		return "error";
+	}
 	
 }
