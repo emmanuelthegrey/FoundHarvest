@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import twitter4j.Status;
+import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.conf.ConfigurationFactory;
+import twitter4j.conf.PropertyConfiguration;
 
 /**
  * Handles requests for the application home page.
@@ -197,15 +201,15 @@ public class HomeController {
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
-		
+			
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 	    
 	    
 	    cb.setDebugEnabled(true)
-	    .setOAuthConsumerKey("zbRmQD45ctlOxf1GS048INBrZ")
-	    .setOAuthConsumerSecret("MzLgQBVdnbJ74Ij2opA0CTV9k9z8wpZ0f8EvhfFQGgB2bFU56g")
-	    .setOAuthAccessToken("805785792778006528-fZ9kuMOyGEWAM8XhNYHQ4y9ymshuMTG")
-	    .setOAuthAccessTokenSecret("ZYYovl5YdK6Z3wH9364TxbM8Evr2QR77WhpnbwvAIbR4f");
+	    .setOAuthConsumerKey(Props.KEY)
+	    .setOAuthConsumerSecret(Props.Secret)
+        .setOAuthAccessToken(Props.Token)
+	    .setOAuthAccessTokenSecret(Props.TokenSecret);
 	    
 	    TwitterFactory tf = new TwitterFactory(cb.build());
 	    
