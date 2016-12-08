@@ -36,14 +36,16 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
-
+	
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
 		CompanyProfile user = DAO_Profile.checkLogin(username, password);
-		
+
+
+
 		if ((user != null) && user.getUserName().equalsIgnoreCase("admin")){
-			Cookie adminID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			Cookie adminID = new Cookie("admin", "" + user.getCompanyID());
 			response.addCookie(adminID);
 			
 			// get the list of books from the dao
@@ -65,14 +67,20 @@ public class HomeController {
 			return "adminHome";
 		}
 		
+
 		if (user != null) {
 			model.addAttribute("user", user);
 			Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
 			response.addCookie(userCompanyID);
+
+
 			return "donationform";
+
 		}
-		
-		return "error";
+		if (user == null) {
+			return "error";
+		}
+		return "";
 	}
 
 	@RequestMapping(value = "/DonationList", method = RequestMethod.GET)
@@ -87,28 +95,27 @@ public class HomeController {
 
 	@RequestMapping(value = "/submittedDonation", method = RequestMethod.POST)
 	public String submittedDonation(Model model, HttpServletRequest request) {
-		//System.out.println(request.getQueryString());
-		
+		// System.out.println(request.getQueryString());
+
 		Donation donation = new Donation();
-	
+
 		donation.setProductDescription(request.getParameter("productDescription"));
 		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
 		donation.setStatus("ready");
 		Cookie[] cookies = request.getCookies();
-		
+
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
 				donation.setCompanyID(Integer.parseInt(c.getValue()));
 			}
 		}
-		
+
 		DAO_Donation.addDonation(donation);
-		
-		
+
 		model.addAttribute("productDescription", request.getParameter("productDescription"));
-		//model.addAttribute("address", request.getParameter("address"));
-		//model.addAttribute("publisher", request.getParameter("publisher"));
-		//model.addAttribute("sales", request.getParameter("sales"));
+		// model.addAttribute("address", request.getParameter("address"));
+		// model.addAttribute("publisher", request.getParameter("publisher"));
+		// model.addAttribute("sales", request.getParameter("sales"));
 		return "submittedDonation";
 	}
 
@@ -133,6 +140,7 @@ public class HomeController {
 	@RequestMapping(value = "/submittedRegistration", method = RequestMethod.POST)
 	public String submittedRegistration(Model model, HttpServletRequest request, HttpServletResponse response) {
 		// System.out.println(request.getQueryString());
+		
 
 		CompanyProfile cp = new CompanyProfile();
 
@@ -164,31 +172,44 @@ public class HomeController {
 
 		model.addAttribute("companyName", request.getParameter("companyName"));
 		model.addAttribute("address", request.getParameter("address"));
+		
 		// model.addAttribute("publisher", request.getParameter("publisher"));
 		// model.addAttribute("sales", request.getParameter("sales"));
+		
 		return "submittedRegistration";
 	}
 
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
 	public String adminHome(Model model, HttpServletRequest request) {
+		/*
+		String validateAdmin = "adminID";
+		Cookie[] cookies = request.getCookies();
+		String adminCookie = "";
+		for (Cookie c : cookies) {
+			if (c.getName().equalsIgnoreCase("adminID")) {
+				adminCookie = c.getName();
+			}
+		}
+		
+		if (validateAdmin.equalsIgnoreCase(adminCookie)) { */
 		// get the list of books from the dao
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
-		//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
-		
-		
 		
 		for (int i = 0; i < items.size(); i++) {
-	
 			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
 				(items.get(i).getDonation().getExpirationDate() > 2)) {
 				items.remove(i);
 			}
 		}
-		
+
 		// add this list to model
 		model.addAttribute("itemList", items);
 
 		return "adminHome";
+		/*}
+		else {
+			return "error";
+		} */
 	}
 
 
@@ -197,7 +218,7 @@ public class HomeController {
 
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
@@ -222,6 +243,55 @@ public class HomeController {
 
 		return "confirm";
 	}
+
+
+	@RequestMapping(value = "/CompanyDonations", method = RequestMethod.GET)
+	public String CompanyDonations(Model model, HttpServletRequest req) {
+
+		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+
+		int companyID = 0;
+		Cookie[] cookies = req.getCookies();
+		for (Cookie c : cookies) {
+
+			if (c.getName().equalsIgnoreCase("userCompanyID")) {
+				companyID = (Integer.parseInt(c.getValue()));
+				System.out.println(companyID);
+			}
+		}
+
+		for (int i = 0; i < items.size(); i++) {
+			if ((!(items.get(i).getDonation().getCompanyID() == companyID))) {
+				items.remove(i);
+				System.out.println(i);
+			}
+
+		}
+
+		model.addAttribute("itemList", items);
+
+		return "CompanyDonations";
+	}
+
+	@RequestMapping(value = "/adminHomeQueue", method = RequestMethod.GET)
+	public String adminHomeQueue(Model model, HttpServletRequest request) {
+		//referencing ItemsForPickup object to build table
+		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+
+		for (int i = 0; i < items.size(); i++) {
+
+			if ((items.get(i).getDonation().getStatus().equalsIgnoreCase("ready"))
+					|| (items.get(i).getDonation().getStatus().equalsIgnoreCase("complete"))
+					|| (items.get(i).getDonation().getStatus().equalsIgnoreCase("cancel"))) {
+				items.remove(i);
+			}
+		}
+
+		model.addAttribute("itemList", items);
+
+		return "adminHomeQueue";
+	}
+
 	
 	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
 	public String cancel(Model model, HttpServletRequest request) {
@@ -231,6 +301,11 @@ public class HomeController {
 		return "cancel";
 	}
 	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error(Model model, HttpServletRequest request) {
+
+		return "error";
+	}
 	
-	
+
 }
