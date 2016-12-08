@@ -16,3 +16,5 @@ log/
 target/
 
 *.class
+hibernate.cfg.xml
+twitter4j.properties
