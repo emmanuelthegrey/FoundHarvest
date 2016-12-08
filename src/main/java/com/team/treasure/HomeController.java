@@ -1,6 +1,6 @@
 package com.team.treasure;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -195,13 +195,16 @@ public class HomeController {
 		// get the list of books from the dao
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 		
-		for (int i = 0; i < items.size(); i++) {
-			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
-				(items.get(i).getDonation().getExpirationDate() > 2)) {
-				items.remove(i);
+		Iterator<itemsForPickup> iter = items.iterator();
+		
+        while (iter.hasNext()) {
+        	itemsForPickup tempItem = iter.next();
+			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready")) || 
+				((tempItem.getDonation().getExpirationDate() > 2))){
+					 iter.remove();
 			}
 		}
-
+		
 		// add this list to model
 		model.addAttribute("itemList", items);
 
@@ -246,26 +249,26 @@ public class HomeController {
 
 
 	@RequestMapping(value = "/CompanyDonations", method = RequestMethod.GET)
-	public String CompanyDonations(Model model, HttpServletRequest req) {
-
+	public String CompanyDonations(Model model, HttpServletRequest request) {
+		System.out.println("new");
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 
 		int companyID = 0;
-		Cookie[] cookies = req.getCookies();
+		
+		Cookie[] cookies = request.getCookies();
 		for (Cookie c : cookies) {
-
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
 				companyID = (Integer.parseInt(c.getValue()));
-				System.out.println(companyID);
+				//System.out.println(companyID);
 			}
 		}
-
-		for (int i = 0; i < items.size(); i++) {
-			if ((!(items.get(i).getDonation().getCompanyID() == companyID))) {
-				items.remove(i);
-				System.out.println(i);
+		
+		Iterator<itemsForPickup> iter = items.iterator();
+	        while (iter.hasNext()) {
+			if (((iter.next().getDonation().getCompanyID() != companyID))) {
+				//System.out.println("items company id that should be removed: " + (items.get(i).getDonation().getCompanyID()));
+				iter.remove();
 			}
-
 		}
 
 		model.addAttribute("itemList", items);
@@ -277,13 +280,11 @@ public class HomeController {
 	public String adminHomeQueue(Model model, HttpServletRequest request) {
 		//referencing ItemsForPickup object to build table
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
-
-		for (int i = 0; i < items.size(); i++) {
-
-			if ((items.get(i).getDonation().getStatus().equalsIgnoreCase("ready"))
-					|| (items.get(i).getDonation().getStatus().equalsIgnoreCase("complete"))
-					|| (items.get(i).getDonation().getStatus().equalsIgnoreCase("cancel"))) {
-				items.remove(i);
+		
+		Iterator<itemsForPickup> iter = items.iterator();
+        while (iter.hasNext()) {
+			if (!(iter.next().getDonation().getStatus().equalsIgnoreCase("ready"))) {
+					 iter.remove();
 			}
 		}
 

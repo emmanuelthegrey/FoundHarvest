@@ -18,7 +18,7 @@ function validateForm() {
 </script> -->
 
  	<h1>Submit Donation Here</h1>
-	<form name="DonationForm" action="../submittedDonation" method="POST">
+	<form name="DonationForm" action="./submittedDonation" method="POST">
 		Product Description: <input type="text" name="productDescription"> <br>
 		Number of days before food expires: <input type="text" name="expirationDate"> <br>
 		Is food packaged:<br> <input type="radio" name="package" value="yes"> Yes<br>
@@ -27,6 +27,8 @@ function validateForm() {
 									 <input type="radio" name="weight" value="No"> No<br>
 		<input type="submit" value="Submit"> 
 	</form> 
+	<br> <a href="./CompanyDonations">Check your companies profile</a>
+	
 	
 </body>
 </html>

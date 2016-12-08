@@ -8,5 +8,6 @@
 </head>
 <body>
 thanks for donating
+<a href="./login">Return to donations</a>
 </body>
 </html>
