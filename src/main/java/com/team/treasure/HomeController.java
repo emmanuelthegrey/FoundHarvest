@@ -37,11 +37,11 @@ public class HomeController {
 		String password = request.getParameter("password");
 
 		CompanyProfile user = DAO_Profile.checkLogin(username, password);
-		
+
 		if (user != null) {
-		model.addAttribute("user", user);
-		Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
-		response.addCookie(userCompanyID);
+			model.addAttribute("user", user);
+			Cookie userCompanyID = new Cookie("userCompanyID", "" + user.getCompanyID());
+			response.addCookie(userCompanyID);
 		}
 		return "home";
 	}
@@ -58,30 +58,29 @@ public class HomeController {
 
 	@RequestMapping(value = "/submittedDonation", method = RequestMethod.POST)
 	public String submittedDonation(Model model, HttpServletRequest request) {
-		//System.out.println(request.getQueryString());
-		
+		// System.out.println(request.getQueryString());
+
 		Donation donation = new Donation();
-		//donation.setNameOfCompany(request.getParameter("nameOfCompany"));
-		//donation.setAddress(request.getParameter("address"));
-		//donation.setItemQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
+		// donation.setNameOfCompany(request.getParameter("nameOfCompany"));
+		// donation.setAddress(request.getParameter("address"));
+		// donation.setItemQuantity(Integer.parseInt(request.getParameter("itemQuantity")));
 		donation.setProductDescription(request.getParameter("productDescription"));
 		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
 		donation.setStatus("ready");
 		Cookie[] cookies = request.getCookies();
-		
+
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
 				donation.setCompanyID(Integer.parseInt(c.getValue()));
 			}
 		}
-		
+
 		DAO_Donation.addDonation(donation);
-		
-		
+
 		model.addAttribute("productDescription", request.getParameter("productDescription"));
-		//model.addAttribute("address", request.getParameter("address"));
-		//model.addAttribute("publisher", request.getParameter("publisher"));
-		//model.addAttribute("sales", request.getParameter("sales"));
+		// model.addAttribute("address", request.getParameter("address"));
+		// model.addAttribute("publisher", request.getParameter("publisher"));
+		// model.addAttribute("sales", request.getParameter("sales"));
 		return "submittedDonation";
 	}
 
@@ -146,21 +145,21 @@ public class HomeController {
 	public String adminHome(Model model, HttpServletRequest request) {
 		// get the list of books from the dao
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
-		//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
-		
-		//ArrayList<String> stuff = new ArrayList<String>();
-		
+		// List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
+
+		// ArrayList<String> stuff = new ArrayList<String>();
+
 		for (int i = 0; i < items.size(); i++) {
-			//if (i.getDonation().getStatus().equalsIgnoreCase("ready")) {
-				//stuff.add(i.getDonation().getProductDescription() + " " + i.getCompany().getCompanyName());
-			//}
-			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
-				(items.get(i).getDonation().getExpirationDate() <= 2)) {
+			// if (i.getDonation().getStatus().equalsIgnoreCase("ready")) {
+			// stuff.add(i.getDonation().getProductDescription() + " " +
+			// i.getCompany().getCompanyName());
+			// }
+			if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready"))
+					|| (items.get(i).getDonation().getExpirationDate() <= 2)) {
 				items.remove(i);
 			}
 		}
-		
-		
+
 		// add this list to model
 		model.addAttribute("itemList", items);
 
@@ -197,29 +196,74 @@ public class HomeController {
 
 		return "login";
 	}
+
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
-		
+
 		ConfigurationBuilder cb = new ConfigurationBuilder();
-	    
-	    
-	    cb.setDebugEnabled(true)
-	    .setOAuthConsumerKey("zbRmQD45ctlOxf1GS048INBrZ")
-	    .setOAuthConsumerSecret("MzLgQBVdnbJ74Ij2opA0CTV9k9z8wpZ0f8EvhfFQGgB2bFU56g")
-	    .setOAuthAccessToken("805785792778006528-fZ9kuMOyGEWAM8XhNYHQ4y9ymshuMTG")
-	    .setOAuthAccessTokenSecret("ZYYovl5YdK6Z3wH9364TxbM8Evr2QR77WhpnbwvAIbR4f");
-	    
-	    TwitterFactory tf = new TwitterFactory(cb.build());
-	    
-	    String tweetName = request.getParameter("tweet");
-	    
-	    twitter4j.Twitter tw = tf.getInstance();
-	    
-	    Status stat = tw.updateStatus("Thank you @" + tweetName + " !");
-	    System.out.println("Twitter updated");
+
+		cb.setDebugEnabled(true).setOAuthConsumerKey("zbRmQD45ctlOxf1GS048INBrZ")
+				.setOAuthConsumerSecret("MzLgQBVdnbJ74Ij2opA0CTV9k9z8wpZ0f8EvhfFQGgB2bFU56g")
+				.setOAuthAccessToken("805785792778006528-fZ9kuMOyGEWAM8XhNYHQ4y9ymshuMTG")
+				.setOAuthAccessTokenSecret("ZYYovl5YdK6Z3wH9364TxbM8Evr2QR77WhpnbwvAIbR4f");
+
+		TwitterFactory tf = new TwitterFactory(cb.build());
+
+		String tweetName = request.getParameter("tweet");
+
+		twitter4j.Twitter tw = tf.getInstance();
+
+		Status stat = tw.updateStatus("Thank you @" + tweetName + " !");
+		System.out.println("Twitter updated");
 
 		return "confirm";
 	}
-	
+
+	@RequestMapping(value = "/CompanyDonations", method = RequestMethod.GET)
+	public String CompanyDonations(Model model, HttpServletRequest req) {
+
+		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+
+		int companyID = 0;
+		Cookie[] cookies = req.getCookies();
+		for (Cookie c : cookies) {
+
+			if (c.getName().equalsIgnoreCase("userCompanyID")) {
+				companyID = (Integer.parseInt(c.getValue()));
+				System.out.println(companyID);
+			}
+		}
+
+		for (int i = 0; i < items.size(); i++) {
+			if ((!(items.get(i).getDonation().getCompanyID() == companyID))) {
+				items.remove(i);
+				System.out.println(i);
+			}
+
+		}
+
+		model.addAttribute("itemList", items);
+
+		return "CompanyDonations";
+	}
+
+	@RequestMapping(value = "/adminHomeQueue", method = RequestMethod.GET)
+	public String adminHomeQueue(Model model, HttpServletRequest request) {
+		//referencing ItemsForPickup object to build table
+		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+
+		for (int i = 0; i < items.size(); i++) {
+
+			if ((items.get(i).getDonation().getStatus().equalsIgnoreCase("ready"))
+					|| (items.get(i).getDonation().getStatus().equalsIgnoreCase("complete"))
+					|| (items.get(i).getDonation().getStatus().equalsIgnoreCase("cancel"))) {
+				items.remove(i);
+			}
+		}
+
+		model.addAttribute("itemList", items);
+
+		return "adminHomeQueue";
+	}
 }
