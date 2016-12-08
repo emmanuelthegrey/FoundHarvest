@@ -6,19 +6,88 @@
 </head>
 <body>
 
-
 	<h1>Create Found Harvest User Account</h1>
-	<form name="RegistrationForm" action="../submittedRegistration" method="post">
-		Company Name: <input type="text" name="companyName"> <br>
-		Company Address: <input type="text" name="address">	<br>
-		Main Contact: <input type="text" name="contact">		<br>
-		Phone Number: <input type="text" name="phoneNumber">	<br>
-		Email: <input type="text" name="email">	<br>
-		Twitter Name: <input type="text" name="twitter">	<br>
-		User Name: <input type="text" name="username">	<br>
-		Password: <input type="text" name="password">	<br>
-		<input type="submit" value="Submit">
-	</form>
+	<div>
+		<form name="RegistrationForm" action="../submittedRegistration" onsubmit="return validateForm()" method="post">
+			Company Name:<input type="text" name="companyName"> <br>
+			Company Address:<input type="text" name="address"> <br>
+			Main Contact:<input type="text" name="contact"><br>
+			Phone Number:<input type="text" id="myNumber" placeholder="xxx-xxx-xxxx"><br>
+			Email:<input type="text" name="email"> <br> 
+			Twitter Name:<input type="text" id="myText" placeholder="@twittername"><br> 
+			User Name:<input type="text" name="username"><br> 
+			Password:<input type="text" name="password"><br> <input type="submit"
+				value="Submit">
+		</form>
+		
+
+		<script>
+			function validateForm() {
+			
+				var cn = document.forms["RegistrationForm"]["companyName"].value;
+				var ad = document.forms["RegistrationForm"]["address"].value;
+				var ct = document.forms["RegistrationForm"]["contact"].value;
+				var pn = document.forms["RegistrationForm"]["phoneNumber"].value;
+				var em = document.forms["RegistrationForm"]["email"].value;
+				var un = document.forms["RegistrationForm"]["username"].value;
+				var pswrd = document.forms["RegistrationForm"]["password"].value;
+
+				if (cn == "") {
+					alert("Company Name must be filled out");
+					return false;
+				}
+				if (ad == "") {
+					alert("Company Address must be filled out");
+					return false;
+				}
+				if (ct == "") {
+					alert("Company Main Contact must be filled out");
+					return false;
+				}
+				if (pn == "") {
+					alert("Phone Number must be filled out");
+					return false;
+				}
+				if (em == "") {
+					alert("Email must be filled out");
+					return false;
+				}
+				if (un == "") {
+					alert("Username must be filled out");
+					return false;
+				}
+				if (pswrd == "") {
+					alert("Password must be filled out");
+					return false;
+				} else if (validatePhone(pn) == false) {
+					alert("Invalid Phone Number");
+					return false;
+				} else if (validateEmail(em) == false) {
+					alert("Invalid email");
+					return false;
+				}
+			}
+			function validateEmail(x) {
+				var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				return re.test(x);
+			}
+			function validatePhone(p) {
+				var ph = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
+				return ph.test(p);
+			}
+			
+			function myFunction() {
+			    var x = document.getElementById("myText").placeholder;
+			    document.getElementById("twittername").innerHTML = x;
+			}
+			
+			function myFunction() {
+			    var y = document.getElementById("myNumber").placeholder;
+			    document.getElementById("xxx-xxx-xxxx").innerHTML = y;
+			}
+			
+		</script>
+	</div>
 
 </body>
 </html>

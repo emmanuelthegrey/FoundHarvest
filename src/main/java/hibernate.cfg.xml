@@ -6,10 +6,10 @@
 	<session-factory>
 		<!-- Database connection settings -->
 		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/companyprofile</property>
+		<property name="hibernate.connection.url">jdbc:mysql://foundharvest.chcxpfskci36.us-west-2.rds.amazonaws.com:3306/FoundHarvestDB</property>
 	
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">UbEr33$$</property>
+		<property name="hibernate.connection.username">oliver</property>
+		<property name="hibernate.connection.password">Zelda120693</property>
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<!-- Specify session context -->

@@ -32,7 +32,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
-
+	
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
@@ -106,6 +106,7 @@ public class HomeController {
 	@RequestMapping(value = "/submittedRegistration", method = RequestMethod.POST)
 	public String submittedRegistration(Model model, HttpServletRequest request, HttpServletResponse response) {
 		// System.out.println(request.getQueryString());
+		
 
 		CompanyProfile cp = new CompanyProfile();
 
@@ -137,8 +138,10 @@ public class HomeController {
 
 		model.addAttribute("companyName", request.getParameter("companyName"));
 		model.addAttribute("address", request.getParameter("address"));
+		
 		// model.addAttribute("publisher", request.getParameter("publisher"));
 		// model.addAttribute("sales", request.getParameter("sales"));
+		
 		return "submittedRegistration";
 	}
 
