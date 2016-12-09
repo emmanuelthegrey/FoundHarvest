@@ -13,8 +13,7 @@
 </head>
 <body>
 
-	<h1>Upcoming Donation Pick Ups </h1>
-	<h2>Displaying Donations that expire within 2 Day </h2>
+	<h1>Upcoming Pick Ups! </h1>
 	<table border="1">
 		<tr>
 			
