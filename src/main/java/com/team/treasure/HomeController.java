@@ -2,6 +2,7 @@ package com.team.treasure;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +34,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
 	
 		String username = request.getParameter("username");
@@ -184,7 +185,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
-	public String adminHome(Model model, HttpServletRequest request) {
+	public String adminHome(Model model, HttpServletRequest request) throws UnsupportedOperationException {
 		/*
 		String validateAdmin = "adminID";
 		Cookie[] cookies = request.getCookies();
@@ -203,8 +204,10 @@ public class HomeController {
 		
         while (iter.hasNext()) {
         	itemsForPickup tempItem = iter.next();
-			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready"))) /* || 
-				((tempItem.getDonation().getExpirationDate() > 2)))*/ {
+        	Date itemDate = tempItem.getDonation().getExpirationDate();
+        	//LocalDate localExpirationDate = itemDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready")) || 
+				((itemDate.before(Calendar.getInstance().getTime())))) {
 					 iter.remove();
 			}
 		}
@@ -319,6 +322,12 @@ public class HomeController {
 	public String error(Model model, HttpServletRequest request) {
 
 		return "error";
+	}
+	
+	@RequestMapping(value = "/donationform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String donationForm(Model model, HttpServletRequest request) {
+
+		return "donationform";
 	}
 	
 

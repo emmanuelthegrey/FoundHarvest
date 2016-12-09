@@ -62,7 +62,7 @@ import java.util.List;
 			Session hibernateSession = factory.openSession();
 			hibernateSession.getTransaction().begin();
 			ArrayList<itemsForPickup> items = new ArrayList<itemsForPickup>();
-			List<Donation> donations = hibernateSession.createQuery("FROM Donation").list();
+			List<Donation> donations = hibernateSession.createQuery("FROM Donation order by expirationDate ASC").list();
 				for (Donation d : donations) {
 					CompanyProfile company = hibernateSession.get(CompanyProfile.class, d.getCompanyID());
 					items.add(new itemsForPickup(company, d));
