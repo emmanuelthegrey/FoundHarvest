@@ -34,7 +34,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
 	
 		String username = request.getParameter("username");
@@ -322,6 +322,12 @@ public class HomeController {
 	public String error(Model model, HttpServletRequest request) {
 
 		return "error";
+	}
+	
+	@RequestMapping(value = "/donationform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String donationForm(Model model, HttpServletRequest request) {
+
+		return "donationform";
 	}
 	
 
