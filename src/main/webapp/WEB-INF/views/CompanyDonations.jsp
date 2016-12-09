@@ -11,7 +11,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Donation List</title>
 </head>
+<script>
+function printDiv(printableArea) {
+    var printContents = document.getElementById(printableArea).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+
+
+
+
+</script>
+
 <body>
+<div id="printableArea">
 
 	<h1> ${item.company.companyName}</h1>
 	<h2>Submitted Donations </h2>
@@ -27,7 +45,6 @@
 		</tr>
 <c:forEach items="${itemList}" var="item">
 		<tr>
-			
 			<td>${item.donation.productDescription } </td>
 			<td>${item.donation.expirationDate }</td>
 			
@@ -41,6 +58,7 @@
           
       	</c:forEach>
 	</table>
-	 
+	           </div>
+	 <input type="button" onclick="printDiv('printableArea')" value="Print Reciept" />
 </body>
 </html>

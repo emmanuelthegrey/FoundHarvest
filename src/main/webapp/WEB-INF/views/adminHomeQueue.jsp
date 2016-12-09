@@ -13,8 +13,24 @@
 </head>
 <body>
 
+<script>
+function printDiv(printableArea) {
+    var printContents = document.getElementById(printableArea).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+
+</script>
+
 	<h1>Donations in the Queue </h1>
 	<h2> </h2>
+				<div id="printableArea">
+	
 	<table border="1">
 		<tr>
 			
@@ -41,6 +57,7 @@
 			<td>${item.donation.expirationDate }</td>
 			<td>${item.company.companyPhoneNumber }</td>
 			<td>${item.company.email } </td>
+			           
 		
 			<td>
 			<form action="cancel" method="get">
@@ -51,6 +68,9 @@
                   
 	</c:forEach>
 	</table>
+		 <input type="button" onclick="printDiv('printableArea')" value="Print Reciept" />
+	
+	</div>
 	<br> 
 	
 	<a href="./adminHome"> Back to upcoming donations </a>
