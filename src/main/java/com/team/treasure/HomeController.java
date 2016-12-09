@@ -242,11 +242,20 @@ public class HomeController {
 	    TwitterFactory tf = new TwitterFactory(cb.build());
 	    
 	    String tweetName = request.getParameter("tweet");
+	    System.out.println("tweetname is " + tweetName);
+	    String companyName = request.getParameter("companyName");
+	    String productDescription = request.getParameter("productDescription");
 	    
 	    twitter4j.Twitter tw = tf.getInstance();
 	    
-	    Status stat = tw.updateStatus("Thank you @" + tweetName + " !");
+	    
+	    if(tweetName.equalsIgnoreCase("")){
+	    	Status stat = tw.updateStatus("Thank you @" + companyName + " for " + productDescription + " !");
+		    System.out.println("tweetname is null");
+	    }else{
+	    Status stat = tw.updateStatus("Thank you @" + tweetName + " for " + productDescription +" !");
 	    System.out.println("Twitter updated");
+	    }
 
 		return "confirm";
 	}
