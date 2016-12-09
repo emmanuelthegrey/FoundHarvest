@@ -1,13 +1,13 @@
 package com.team.treasure;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Donation {
 
 	private int idCompanyDonation;
 	private int companyID;
 	private String productDescription;
-	private int expirationDate;
+	private Date expirationDate;
 	private String status;
 	
 	// calc method
@@ -63,11 +63,11 @@ public class Donation {
 	}
 
 
-	public int getExpirationDate() {
+	public Date getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(int expirationDate) {
+	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

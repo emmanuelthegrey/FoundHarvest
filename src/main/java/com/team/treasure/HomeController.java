@@ -1,5 +1,8 @@
 package com.team.treasure;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,13 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import twitter4j.Status;
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
-import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
-import twitter4j.conf.ConfigurationFactory;
-import twitter4j.conf.PropertyConfiguration;
 
 /**
  * Handles requests for the application home page.
@@ -56,8 +55,8 @@ public class HomeController {
 			
 			for (int i = 0; i < items.size(); i++) {
 		
-				if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")) ||
-					(items.get(i).getDonation().getExpirationDate() > 2)) {
+				if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")))/* ||
+					(items.get(i).getDonation().getExpirationDate() > 2)) */ {
 					items.remove(i);
 				}
 			}
@@ -100,7 +99,11 @@ public class HomeController {
 		Donation donation = new Donation();
 
 		donation.setProductDescription(request.getParameter("productDescription"));
-		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
+		//adds days until expiration and makes it a local date object
+		LocalDate expirationLocalDate = LocalDate.now().plusDays(Integer.parseInt(request.getParameter("expirationDate")));
+		//turns localdate into date
+		Date date = Date.from(expirationLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		donation.setExpirationDate(date);
 		donation.setStatus("ready");
 		Cookie[] cookies = request.getCookies();
 		
@@ -200,8 +203,8 @@ public class HomeController {
 		
         while (iter.hasNext()) {
         	itemsForPickup tempItem = iter.next();
-			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready")) || 
-				((tempItem.getDonation().getExpirationDate() > 2))){
+			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready"))) /* || 
+				((tempItem.getDonation().getExpirationDate() > 2)))*/ {
 					 iter.remove();
 			}
 		}

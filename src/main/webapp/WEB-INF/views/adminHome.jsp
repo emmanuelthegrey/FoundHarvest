@@ -22,7 +22,7 @@
 			<th>Main Contact</th>
 			<th>Address</th> 
 			<th>Product Description</th>	
-			<th>Expiration Date</th>
+			<th>Last Day To Pickup</th>
 			<th>Phone Number</th>
 			<th>Email</th>
 			

@@ -20,7 +20,7 @@ function validateForm() {
  	<h1>Submit Donation Here</h1>
 	<form name="DonationForm" action="./submittedDonation" method="POST">
 		Product Description: <input type="text" name="productDescription"> <br>
-		Number of days before food expires: <input type="text" name="expirationDate"> <br>
+		How many days do we have to pick this up? <input type="text" name="expirationDate"> <br>
 		Is food packaged:<br> <input type="radio" name="package" value="yes"> Yes<br>
  						 	  <input type="radio" name="package" value="no"> No<br>
 		Is food greater than 200lbs:<br><input type="radio" name="weight" value="yes"> Yes<br>
