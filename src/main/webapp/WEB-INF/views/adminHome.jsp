@@ -51,6 +51,11 @@
             <form action="confirm" method="get">
                 <input type="hidden" name="confirm" value="${item.donation.idCompanyDonation}" />
                 <input type="hidden" name="tweet" value="${item.company.twitterName}" />
+                <input type="hidden" name="companyName" value="${item.company.companyName}" />
+                <input type="hidden" name="productDescription" value="${item.donation.productDescription}" />
+                
+                
+                
                 <input type="submit" value="confirm">
             </form>
             </td>
