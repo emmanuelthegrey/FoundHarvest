@@ -51,6 +51,8 @@
                   
 	</c:forEach>
 	</table>
-	 
+	<br> 
+	
+	<a href="./adminHome"> Back to upcoming donations </a>
 </body>
 </html>

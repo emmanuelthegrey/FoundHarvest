@@ -59,5 +59,7 @@
 	</c:forEach>
 	</table>
 	 
+	<br>
+	<a href="./adminHomeQueue"> Check previous donations! </a>
 </body>
 </html>

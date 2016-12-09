@@ -103,6 +103,7 @@ public class HomeController {
 		donation.setExpirationDate(Integer.parseInt(request.getParameter("expirationDate")));
 		donation.setStatus("ready");
 		Cookie[] cookies = request.getCookies();
+		
 
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
@@ -228,13 +229,13 @@ public class HomeController {
 			
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 	    
-	    /*
+	    
 	    cb.setDebugEnabled(true)
 	    .setOAuthConsumerKey(Props.KEY)
 	    .setOAuthConsumerSecret(Props.Secret)
         .setOAuthAccessToken(Props.Token)
 	    .setOAuthAccessTokenSecret(Props.TokenSecret);
-	    */
+	    
 	    TwitterFactory tf = new TwitterFactory(cb.build());
 	    
 	    String tweetName = request.getParameter("tweet");
@@ -283,7 +284,7 @@ public class HomeController {
 		
 		Iterator<itemsForPickup> iter = items.iterator();
         while (iter.hasNext()) {
-			if (!(iter.next().getDonation().getStatus().equalsIgnoreCase("ready"))) {
+			if (!(iter.next().getDonation().getStatus().equalsIgnoreCase("complete"))) {
 					 iter.remove();
 			}
 		}

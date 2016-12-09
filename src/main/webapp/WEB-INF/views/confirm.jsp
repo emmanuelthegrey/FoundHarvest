@@ -7,7 +7,7 @@
 <title>Confirm</title>
 </head>
 <body>
-thanks for donating
-<a href="./login">Return to donations</a>
+thanks for donating!
+<a href="./adminHome">Return to current donations</a>
 </body>
 </html>

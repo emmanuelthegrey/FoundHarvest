@@ -11,7 +11,7 @@
 
 	<P>Thank you "${companyName }" for registering</P>
 
-
+	<a href="./"> Back to login </a>
 
 
 </body>
