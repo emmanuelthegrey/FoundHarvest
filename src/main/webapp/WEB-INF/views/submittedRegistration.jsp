@@ -13,6 +13,5 @@
 
 	<a href="./"> Back to login </a>
 
-
 </body>
 </html>

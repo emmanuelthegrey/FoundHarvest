@@ -24,6 +24,6 @@
 	
 <!--  <a href="./list">Back to List</a> -->
 <!-- <a href="./">Back to home</a> -->
-<a href="./resources/DonationForm.html"> add another Donation?</a>
+<a href="./login"> add another Donation?</a>
 </body>
 </html>
