@@ -37,11 +37,22 @@ public class DAO_Profile {
 			setupFactory();
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
-		// save this specific record
-		int i = (Integer) hibernateSession.save(cp);
-		hibernateSession.getTransaction().commit();
-		hibernateSession.close();
-		return i;
+		Query query=  hibernateSession.createQuery("from CompanyProfile where userName=?");
+
+		CompanyProfile user=(CompanyProfile)query.setString(0,cp.getUserName()).uniqueResult();
+		if(user!=null){
+			hibernateSession.getTransaction().commit();
+			hibernateSession.close();
+			return 0;
+		}else{
+			//Insert user
+			// save this specific record
+			int i = (Integer) hibernateSession.save(cp);
+			hibernateSession.getTransaction().commit();
+			hibernateSession.close();
+			return i;
+		} 
+		
 	}
 
 	public static CompanyProfile deleteCompanyProfile(int idCompanyProfile) {

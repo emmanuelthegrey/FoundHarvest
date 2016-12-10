@@ -172,6 +172,11 @@ public class HomeController {
 		cp.setPassword(request.getParameter("password"));
 
 		int id = DAO_Profile.addCompanyProfile(cp);
+		System.out.println("id is: " + id);
+		if (id == 0 ) {
+			model.addAttribute("username", request.getParameter("username"));
+			return "registrationTaken";
+		}
 		/*
 		 * Cookie userID = new Cookie("userid", "" + id); Cookie companyName =
 		 * new Cookie("companyName", request.getParameter("companyName"));
