@@ -6,11 +6,10 @@ public class Donation {
 
 	private int idCompanyDonation;
 	private int companyID;
-	private String productDescription;
 	private int weight;
-	private Date expirationDate;
+	private String productDescription;
 	private String status;
-
+	private Date expirationDate;
 	private Date submissionDate;
 	private Date confirmationDate;
 	

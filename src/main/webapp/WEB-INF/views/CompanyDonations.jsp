@@ -12,53 +12,40 @@
 <title>Donation List</title>
 </head>
 <script>
-function printDiv(printableArea) {
-    var printContents = document.getElementById(printableArea).innerHTML;
-    var originalContents = document.body.innerHTML;
+	function printDiv(printableArea) {
+		var printContents = document.getElementById(printableArea).innerHTML;
+		var originalContents = document.body.innerHTML;
 
-    document.body.innerHTML = printContents;
+		document.body.innerHTML = printContents;
 
-    window.print();
+		window.print();
 
-    document.body.innerHTML = originalContents;
-}
-
-
-
-
+		document.body.innerHTML = originalContents;
+	}
 </script>
 
 <body>
-<div id="printableArea">
+	<div id="printableArea">
 
-	<h1> ${item.company.companyName}</h1>
-	<h2>Submitted Donations </h2>
-	<table border="1">
-		<tr>
-			
-			 
-			<th>Product Description</th>
-			<th>Expiration Date</th> 
-			
-			
-											
-		</tr>
-<c:forEach items="${itemList}" var="item">
-		<tr>
-			<td>${item.donation.productDescription } </td>
-			<td>${item.donation.expirationDate }</td>
-			
-		
-			<td>
-			<form action="cancel" method="get">
-                <input type="hidden" name="idCompanyDonation" value="${item.donation.idCompanyDonation}" />
-                <input type ="submit" value="cancel">
-            </form>
-            </td>
-          
-      	</c:forEach>
-	</table>
-	           </div>
-	 <input type="button" onclick="printDiv('printableArea')" value="Print Reciept" />
+		<h1>${companyName}</h1>
+		<h2>Submitted Donations</h2>
+		<table border="1">
+			<tr>
+				<th>Date Submitted</th>
+				<th>Donation Description</th>
+				<th>Weight of Donation</th>
+				<th>Date Confirmed</th>
+			</tr>
+			<c:forEach items="${itemList}" var="item">
+				<tr>
+					<td>${item.donation.submissionDate }
+					<td>${item.donation.productDescription }</td>
+					<td>${item.donation.weight }</td>
+					<td>${item.donation.confirmationDate }</td>
+			</c:forEach>
+		</table>
+	</div>
+	<input type="button" onclick="printDiv('printableArea')"
+		value="Print Reciept" />
 </body>
 </html>

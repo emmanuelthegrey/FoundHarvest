@@ -291,7 +291,7 @@ public class HomeController {
 				iter.remove();
 			}
 		}
-
+	    model.addAttribute("companyName", items.get(0).getCompany().getCompanyName());    
 		model.addAttribute("itemList", items);
 
 		return "CompanyDonations";

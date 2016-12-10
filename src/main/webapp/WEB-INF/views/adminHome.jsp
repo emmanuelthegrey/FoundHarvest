@@ -30,7 +30,7 @@
 						
 		</tr>
 <c:forEach items="${itemList}" var="item">
-	<!-- <c:if test="${item.donation.status == 'ready' }"> -->
+	
 		<tr>
 			
 			<td>${item.company.companyName }</td>
@@ -53,13 +53,9 @@
                 <input type="hidden" name="tweet" value="${item.company.twitterName}" />
                 <input type="hidden" name="companyName" value="${item.company.companyName}" />
                 <input type="hidden" name="productDescription" value="${item.donation.productDescription}" />
-                
-                
-                
                 <input type="submit" value="confirm">
             </form>
             </td>
-           <!--   </c:if>-->
 	</c:forEach>
 	</table>
 	 
