@@ -20,8 +20,6 @@ response.setHeader("Refresh", timeout + "; URL = login.jsp");
 </head>
 <body>
 	<h1>Submitted Donation: </h1>
-	
-
 	<P>Product: "${productDescription }"</P>
 <!--  	<p>Publisher: "${publisher }" </p> -->
 <!--	<p>Sales: "${sales }" </p> -->
@@ -31,6 +29,6 @@ response.setHeader("Refresh", timeout + "; URL = login.jsp");
 	
 <!--  <a href="./list">Back to List</a> -->
 <!-- <a href="./">Back to home</a> -->
-<a href="./login"> add another Donation?</a>
+<a href="./donationform"> add another Donation?</a>
 </body>
 </html>

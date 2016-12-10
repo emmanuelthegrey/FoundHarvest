@@ -3,6 +3,8 @@ package com.team.treasure;
 
 
 	import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 	import org.hibernate.Session;
 	import org.hibernate.SessionFactory;
@@ -62,7 +64,7 @@ import java.util.List;
 			Session hibernateSession = factory.openSession();
 			hibernateSession.getTransaction().begin();
 			ArrayList<itemsForPickup> items = new ArrayList<itemsForPickup>();
-			List<Donation> donations = hibernateSession.createQuery("FROM Donation").list();
+			List<Donation> donations = hibernateSession.createQuery("FROM Donation order by expirationDate ASC").list();
 				for (Donation d : donations) {
 					CompanyProfile company = hibernateSession.get(CompanyProfile.class, d.getCompanyID());
 					items.add(new itemsForPickup(company, d));
@@ -94,7 +96,9 @@ import java.util.List;
             Session hibernateSession = factory.openSession();
             hibernateSession.getTransaction().begin();
 			Donation donation = (hibernateSession.get(Donation.class, id));
+			Date confirmationDate = Calendar.getInstance().getTime();
 			donation.setStatus("complete");
+			donation.setConfirmationDate(confirmationDate);
 			hibernateSession.update(donation);
             //hibernateSession.createQuery("UPDATE Donation set status = complete"
             		//+ " where idCompanyDonation = :id").list();

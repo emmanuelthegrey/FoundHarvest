@@ -2,6 +2,7 @@ package com.team.treasure;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +34,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
 	public String home(Model model, HttpServletRequest request, HttpServletResponse response) {
 	
 		String username = request.getParameter("username");
@@ -47,22 +48,22 @@ public class HomeController {
 			Cookie adminID = new Cookie("admin", "" + user.getCompanyID());
 			response.addCookie(adminID);
 			
-			// get the list of books from the dao
 			List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
-			//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
 			
+			Iterator<itemsForPickup> iter = items.iterator();
 			
-			
-			for (int i = 0; i < items.size(); i++) {
-		
-				if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")))/* ||
-					(items.get(i).getDonation().getExpirationDate() > 2)) */ {
-					items.remove(i);
+	        while (iter.hasNext()) {
+	        	itemsForPickup tempItem = iter.next();
+	        	Date itemDate = tempItem.getDonation().getExpirationDate();
+				if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready")) || 
+					(itemDate.before(Calendar.getInstance().getTime()))) {
+						 iter.remove();
 				}
 			}
 			
 			// add this list to model
-			model.addAttribute("itemList", items);	
+			model.addAttribute("itemList", items);
+
 			return "adminHome";
 		}
 		
@@ -98,18 +99,29 @@ public class HomeController {
 
 		Donation donation = new Donation();
 
-		donation.setProductDescription(request.getParameter("productDescription"));
+		
 		//adds days until expiration and makes it a local date object
 		LocalDate expirationLocalDate = LocalDate.now().plusDays(Integer.parseInt(request.getParameter("expirationDate")));
+		
 		//turns localdate into date
 		Date date = Date.from(expirationLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		donation.setExpirationDate(date);
+
+		Date expirationDate = Date.from(expirationLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		//sets date of submission to current day
+		Date submissionDate = Calendar.getInstance().getTime();
+		
+		
+		donation.setSubmissionDate(submissionDate);
+		donation.setExpirationDate(expirationDate);
+		donation.setProductDescription(request.getParameter("productDescription"));
 		donation.setWeight(Integer.parseInt(request.getParameter("enterWeight")));
+
 		donation.setStatus("ready");
 		
 		Cookie[] cookies = request.getCookies();
 		
-
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
 				donation.setCompanyID(Integer.parseInt(c.getValue()));
@@ -173,20 +185,14 @@ public class HomeController {
 		 * response.addCookie(address); response.addCookie(mainContact);
 		 * response.addCookie(companyPhoneNumber);
 		 */
-		// donation.setPublisher(request.getParameter("publisher"));
-		// donation.setSales(Integer.parseInt(request.getParameter("sales")));
-
+		
 		model.addAttribute("companyName", request.getParameter("companyName"));
-		model.addAttribute("address", request.getParameter("address"));
-		
-		// model.addAttribute("publisher", request.getParameter("publisher"));
-		// model.addAttribute("sales", request.getParameter("sales"));
-		
+	
 		return "submittedRegistration";
 	}
 
 	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
-	public String adminHome(Model model, HttpServletRequest request) {
+	public String adminHome(Model model, HttpServletRequest request) throws UnsupportedOperationException {
 		/*
 		String validateAdmin = "adminID";
 		Cookie[] cookies = request.getCookies();
@@ -205,8 +211,10 @@ public class HomeController {
 		
         while (iter.hasNext()) {
         	itemsForPickup tempItem = iter.next();
-			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready"))) /* || 
-				((tempItem.getDonation().getExpirationDate() > 2)))*/ {
+        	Date itemDate = tempItem.getDonation().getExpirationDate();
+        	//LocalDate localExpirationDate = itemDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready")) || 
+				((itemDate.before(Calendar.getInstance().getTime())))) {
 					 iter.remove();
 			}
 		}
@@ -230,10 +238,10 @@ public class HomeController {
 
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
+		
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
 			
 		ConfigurationBuilder cb = new ConfigurationBuilder();
-	    
 	    
 	    cb.setDebugEnabled(true)
 	    .setOAuthConsumerKey(Props.KEY)
@@ -242,13 +250,20 @@ public class HomeController {
 	    .setOAuthAccessTokenSecret(Props.TokenSecret);
 	    
 	    TwitterFactory tf = new TwitterFactory(cb.build());
-	    
-	    String tweetName = request.getParameter("tweet");
-	    
 	    twitter4j.Twitter tw = tf.getInstance();
 	    
-	    Status stat = tw.updateStatus("Thank you @" + tweetName + " !");
-	    System.out.println("Twitter updated");
+	    String tweetName = request.getParameter("tweet");
+	    String companyName = request.getParameter("companyName");
+	    String productDescription = request.getParameter("productDescription");
+	   
+	 
+	    if(tweetName.equalsIgnoreCase("")){
+	    	Status stat = tw.updateStatus("Thank you @" + companyName + " for the " + productDescription + "!");
+		    System.out.println("tweetname is null");
+	    }else{
+	    Status stat = tw.updateStatus("Thank you @" + tweetName + " for " + productDescription +"!");
+	    //System.out.println("Twitter updated");
+	    }
 
 		return "confirm";
 	}
@@ -256,7 +271,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/CompanyDonations", method = RequestMethod.GET)
 	public String CompanyDonations(Model model, HttpServletRequest request) {
-		System.out.println("new");
+		
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 
 		int companyID = 0;
@@ -271,7 +286,7 @@ public class HomeController {
 		
 		Iterator<itemsForPickup> iter = items.iterator();
 	        while (iter.hasNext()) {
-			if (((iter.next().getDonation().getCompanyID() != companyID))) {
+			if (iter.next().getDonation().getCompanyID() != companyID) {
 				//System.out.println("items company id that should be removed: " + (items.get(i).getDonation().getCompanyID()));
 				iter.remove();
 			}
@@ -312,6 +327,12 @@ public class HomeController {
 	public String error(Model model, HttpServletRequest request) {
 
 		return "error";
+	}
+	
+	@RequestMapping(value = "/donationform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String donationForm(Model model, HttpServletRequest request) {
+
+		return "donationform";
 	}
 	
 

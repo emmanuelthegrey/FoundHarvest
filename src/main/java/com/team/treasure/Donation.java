@@ -11,12 +11,29 @@ public class Donation {
 	private Date expirationDate;
 	private String status;
 
-
+	private Date submissionDate;
+	private Date confirmationDate;
+	
 	public Donation(){
 		super();
 	}
 	
+	public Date getConfirmationDate() {
+		return confirmationDate;
+	}
+
+	public void setConfirmationDate(Date confirmationDate) {
+		this.confirmationDate = confirmationDate;
+	}
 	
+	public Date getSubmissionDate() {
+		return submissionDate;
+	}
+
+	public void setSubmissionDate(Date submissionDate) {
+		this.submissionDate = submissionDate;
+	}
+
 
 	public int getIdCompanyDonation() {
 		return idCompanyDonation;

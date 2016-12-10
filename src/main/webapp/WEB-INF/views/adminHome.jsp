@@ -13,8 +13,7 @@
 </head>
 <body>
 
-	<h1>Upcoming Donation Pick Ups </h1>
-	<h2>Displaying Donations that expire within 2 Day </h2>
+	<h1>Upcoming Pick Ups! </h1>
 	<table border="1">
 		<tr>
 			
@@ -52,6 +51,11 @@
             <form action="confirm" method="get">
                 <input type="hidden" name="confirm" value="${item.donation.idCompanyDonation}" />
                 <input type="hidden" name="tweet" value="${item.company.twitterName}" />
+                <input type="hidden" name="companyName" value="${item.company.companyName}" />
+                <input type="hidden" name="productDescription" value="${item.donation.productDescription}" />
+                
+                
+                
                 <input type="submit" value="confirm">
             </form>
             </td>
