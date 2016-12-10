@@ -48,22 +48,22 @@ public class HomeController {
 			Cookie adminID = new Cookie("admin", "" + user.getCompanyID());
 			response.addCookie(adminID);
 			
-			// get the list of books from the dao
 			List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
-			//List<CompanyProfile> companies = DAO_Profile.getAllProfiles();
 			
+			Iterator<itemsForPickup> iter = items.iterator();
 			
-			
-			for (int i = 0; i < items.size(); i++) {
-		
-				if ((!items.get(i).getDonation().getStatus().equalsIgnoreCase("ready")))/* ||
-					(items.get(i).getDonation().getExpirationDate() > 2)) */ {
-					items.remove(i);
+	        while (iter.hasNext()) {
+	        	itemsForPickup tempItem = iter.next();
+	        	Date itemDate = tempItem.getDonation().getExpirationDate();
+				if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("ready")) || 
+					(itemDate.before(Calendar.getInstance().getTime()))) {
+						 iter.remove();
 				}
 			}
 			
 			// add this list to model
-			model.addAttribute("itemList", items);	
+			model.addAttribute("itemList", items);
+
 			return "adminHome";
 		}
 		
@@ -113,7 +113,6 @@ public class HomeController {
 		donation.setSubmissionDate(submissionDate);
 		donation.setExpirationDate(expirationDate);
 		donation.setProductDescription(request.getParameter("productDescription"));
-		
 		donation.setStatus("ready");
 		
 		Cookie[] cookies = request.getCookies();
@@ -181,15 +180,9 @@ public class HomeController {
 		 * response.addCookie(address); response.addCookie(mainContact);
 		 * response.addCookie(companyPhoneNumber);
 		 */
-		// donation.setPublisher(request.getParameter("publisher"));
-		// donation.setSales(Integer.parseInt(request.getParameter("sales")));
-
+		
 		model.addAttribute("companyName", request.getParameter("companyName"));
-		model.addAttribute("address", request.getParameter("address"));
-		
-		// model.addAttribute("publisher", request.getParameter("publisher"));
-		// model.addAttribute("sales", request.getParameter("sales"));
-		
+	
 		return "submittedRegistration";
 	}
 
@@ -240,10 +233,10 @@ public class HomeController {
 
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET)
 	public String confirm(Model model, HttpServletRequest request) throws TwitterException {
+		
 		DAO_Donation.confirmDonation(Integer.parseInt(request.getParameter("confirm")));
 			
 		ConfigurationBuilder cb = new ConfigurationBuilder();
-	    
 	    
 	    cb.setDebugEnabled(true)
 	    .setOAuthConsumerKey(Props.KEY)
@@ -252,21 +245,19 @@ public class HomeController {
 	    .setOAuthAccessTokenSecret(Props.TokenSecret);
 	    
 	    TwitterFactory tf = new TwitterFactory(cb.build());
-	    
-	    String tweetName = request.getParameter("tweet");
-	    System.out.println("tweetname is " + tweetName);
-	    String companyName = request.getParameter("companyName");
-	    String productDescription = request.getParameter("productDescription");
-	    
 	    twitter4j.Twitter tw = tf.getInstance();
 	    
-	    
+	    String tweetName = request.getParameter("tweet");
+	    String companyName = request.getParameter("companyName");
+	    String productDescription = request.getParameter("productDescription");
+	   
+	 
 	    if(tweetName.equalsIgnoreCase("")){
-	    	Status stat = tw.updateStatus("Thank you @" + companyName + " for " + productDescription + " !");
+	    	Status stat = tw.updateStatus("Thank you @" + companyName + " for the " + productDescription + "!");
 		    System.out.println("tweetname is null");
 	    }else{
-	    Status stat = tw.updateStatus("Thank you @" + tweetName + " for " + productDescription +" !");
-	    System.out.println("Twitter updated");
+	    Status stat = tw.updateStatus("Thank you @" + tweetName + " for " + productDescription +"!");
+	    //System.out.println("Twitter updated");
 	    }
 
 		return "confirm";
@@ -275,7 +266,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/CompanyDonations", method = RequestMethod.GET)
 	public String CompanyDonations(Model model, HttpServletRequest request) {
-		System.out.println("new");
+		
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 
 		int companyID = 0;
@@ -290,7 +281,7 @@ public class HomeController {
 		
 		Iterator<itemsForPickup> iter = items.iterator();
 	        while (iter.hasNext()) {
-			if (((iter.next().getDonation().getCompanyID() != companyID))) {
+			if (iter.next().getDonation().getCompanyID() != companyID) {
 				//System.out.println("items company id that should be removed: " + (items.get(i).getDonation().getCompanyID()));
 				iter.remove();
 			}
