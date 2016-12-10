@@ -13,6 +13,7 @@
 		<property name="companyID" column="companyID" type="int"></property>
 		<property name="productDescription" column="productDescription" type="string"></property>
 		<property name="expirationDate" column="expirationDate" type="date"></property>
+		<property name="submissionDate" column="submissionDate" type="date"></property>
 		<property name="status" column="status" type="string"></property>
 		
 	</class>

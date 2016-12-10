@@ -9,6 +9,7 @@ public class Donation {
 	private String productDescription;
 	private Date expirationDate;
 	private String status;
+	private Date submissionDate;
 	
 	// calc method
 	// private String category;
@@ -25,6 +26,20 @@ public class Donation {
 	
 	
 	
+
+	public Date getSubmissionDate() {
+		return submissionDate;
+	}
+
+
+
+
+	public void setSubmissionDate(Date submissionDate) {
+		this.submissionDate = submissionDate;
+	}
+
+
+
 
 	public int getIdCompanyDonation() {
 		return idCompanyDonation;

@@ -99,16 +99,25 @@ public class HomeController {
 
 		Donation donation = new Donation();
 
-		donation.setProductDescription(request.getParameter("productDescription"));
+		
 		//adds days until expiration and makes it a local date object
 		LocalDate expirationLocalDate = LocalDate.now().plusDays(Integer.parseInt(request.getParameter("expirationDate")));
+		
 		//turns localdate into date
-		Date date = Date.from(expirationLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		donation.setExpirationDate(date);
+		Date expirationDate = Date.from(expirationLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		//sets date of submission to current day
+		Date submissionDate = Calendar.getInstance().getTime();
+		
+		
+		donation.setSubmissionDate(submissionDate);
+		donation.setExpirationDate(expirationDate);
+		donation.setProductDescription(request.getParameter("productDescription"));
+		
 		donation.setStatus("ready");
+		
 		Cookie[] cookies = request.getCookies();
 		
-
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
 				donation.setCompanyID(Integer.parseInt(c.getValue()));
