@@ -14,6 +14,7 @@
 		<property name="productDescription" column="productDescription" type="string"></property>
 		<property name="expirationDate" column="expirationDate" type="date"></property>
 		<property name="status" column="status" type="string"></property>
+		<property name="weight" column="weight" type="int"></property>
 		
 	</class>
 </hibernate-mapping>

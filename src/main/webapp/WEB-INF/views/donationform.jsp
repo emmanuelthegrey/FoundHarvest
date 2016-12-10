@@ -25,6 +25,8 @@ function validateForm() {
  						 	  <input type="radio" name="package" value="no"> No<br>
 		Is food greater than 200lbs:<br><input type="radio" name="weight" value="yes"> Yes<br>
 									 <input type="radio" name="weight" value="No"> No<br>
+	 Please enter estimated weight of package(s) in (lbs): <input type="text" name="enterWeight"> <br>
+	 
 		<input type="submit" value="Submit"> 
 	</form> 
 	<br> <a href="./CompanyDonations">Check your companies profile</a>

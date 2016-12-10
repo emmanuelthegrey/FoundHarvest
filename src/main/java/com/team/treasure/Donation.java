@@ -7,22 +7,14 @@ public class Donation {
 	private int idCompanyDonation;
 	private int companyID;
 	private String productDescription;
+	private int weight;
 	private Date expirationDate;
 	private String status;
-	
-	// calc method
-	// private String category;
-	// private String dateSubmission;
-	// private String daysGood;
-	// private String readyPickup;
-	// private String pickupTime;
-	
-	// private String storageLocation;
+
 
 	public Donation(){
 		super();
 	}
-	
 	
 	
 
@@ -61,6 +53,15 @@ public class Donation {
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
 
 
 	public Date getExpirationDate() {

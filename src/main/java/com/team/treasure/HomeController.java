@@ -104,7 +104,9 @@ public class HomeController {
 		//turns localdate into date
 		Date date = Date.from(expirationLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		donation.setExpirationDate(date);
+		donation.setWeight(Integer.parseInt(request.getParameter("enterWeight")));
 		donation.setStatus("ready");
+		
 		Cookie[] cookies = request.getCookies();
 		
 
