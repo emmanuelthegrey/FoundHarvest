@@ -9,12 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="./resources/sorttable.js"/></script>
 <title>Admin Home</title>
 </head>
 <body>
 
 	<h1>Upcoming Pick Ups! </h1>
-	<table border="1">
+	<table class="sortable" border="1">
 		<tr>
 			
 			<th>Company Name</th> 
@@ -24,7 +25,6 @@
 			<th>Last Day To Pickup</th>
 			<th>Phone Number</th>
 			<th>Email</th>
-			
 			<th>Cancel </th>		
 			<th>Confirm </th>
 						

@@ -172,7 +172,7 @@ public class HomeController {
 		cp.setPassword(request.getParameter("password"));
 
 		int id = DAO_Profile.addCompanyProfile(cp);
-		System.out.println("id is: " + id);
+		//System.out.println("id is: " + id);
 		if (id == 0 ) {
 			model.addAttribute("username", request.getParameter("username"));
 			return "registrationTaken";

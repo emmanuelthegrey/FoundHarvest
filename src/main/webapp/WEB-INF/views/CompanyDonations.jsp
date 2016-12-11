@@ -10,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Donation List</title>
+<script src="./resources/sorttable.js"/></script>
 </head>
 <script>
 	function printDiv(printableArea) {
@@ -29,7 +30,7 @@
 
 		<h1>${companyName}</h1>
 		<h2>Submitted Donations</h2>
-		<table border="1">
+		<table class="sortable" border="1">
 			<tr>
 				<th>Date Submitted</th>
 				<th>Donation Description</th>

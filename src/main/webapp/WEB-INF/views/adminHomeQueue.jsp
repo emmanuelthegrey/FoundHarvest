@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="./resources/sorttable.js"/></script>
 <title>Donations in the Queue</title>
 </head>
 <body>
@@ -31,7 +32,7 @@ function printDiv(printableArea) {
 	<h2> </h2>
 				<div id="printableArea">
 	
-	<table border="1">
+	<table class="sortable" border="1">
 		<tr>
 			
 			<th>Company Name</th> 
