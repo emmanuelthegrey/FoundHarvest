@@ -6,8 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>it is deleted</title>
 </head>
+<link rel="stylesheet" href="./resources/css/bootstrap.css">
+
+<link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <body>
-<h1>THUS IT HAS BEEN DELETED</h1>
+<script type="./resources/js/bootstrap.min.js">
+<h1>THIS IT HAS BEEN DELETED</h1>
 
 <h1>You deleted this donation: </h1>
 
@@ -19,5 +23,6 @@
 <a href="./DonationList">Back to List</a> |
 <a href="./">Back to home</a> |
 <a href="./resources/DonationForm.html"> add another Donation?</a>
+</script>
 </body>
 </html>
