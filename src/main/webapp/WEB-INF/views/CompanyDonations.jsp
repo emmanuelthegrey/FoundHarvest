@@ -45,7 +45,15 @@
 					<td>${item.donation.submissionDate }
 					<td>${item.donation.productDescription }</td>
 					<td>${item.donation.weight }</td>
-					<td>${item.donation.confirmationDate }</td>
+					<c:choose>
+    				<c:when test="${empty item.donation.confirmationDate}">
+        			<td> Ready for pickup! </td>
+   				    </c:when>
+    				<c:otherwise>
+      				 <td>${item.donation.confirmationDate }</td>
+   					</c:otherwise>
+					</c:choose>
+					
 			</c:forEach>
 		</table>
 	</div>

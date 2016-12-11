@@ -9,7 +9,6 @@
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
-
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="./resources/sorttable.js"/></script>
