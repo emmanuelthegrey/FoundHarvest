@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@page import="com.team.treasure.Donation"%>
 
 
@@ -65,16 +66,16 @@
 			<td>
 			<form action="cancel" method="get">
                 <input type="hidden" name="cancel" value="${item.donation.idCompanyDonation}" />
-                <input type ="submit" value="cancel">
+                <input type ="submit" class="btn btn-danger" value="Cancel">
             </form>
             </td>
             <td>
-            <form action="confirm" method="get">
+            <form action="confirm"  method="get">
                 <input type="hidden" name="confirm" value="${item.donation.idCompanyDonation}" />
                 <input type="hidden" name="tweet" value="${item.company.twitterName}" />
                 <input type="hidden" name="companyName" value="${item.company.companyName}" />
                 <input type="hidden" name="productDescription" value="${item.donation.productDescription}" />
-                <input type="submit" value="confirm">
+                <input type="submit" class="btn btn-success" value="Confirm">
             </form>
             </td>
 	</c:forEach>

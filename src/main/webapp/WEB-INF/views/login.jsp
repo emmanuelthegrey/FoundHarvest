@@ -11,7 +11,7 @@
 
 
       
-<form name="loginForm" action="./login" method ="POST">
+<form name="loginForm" class="form-horizontal" action="./login" method ="POST">
 	<h1>Log in</h1>
 	<input type="text" name="username" placeholder="Username" required><br>
 	<input type="password" name="password" placeholder="Password" required><br>
