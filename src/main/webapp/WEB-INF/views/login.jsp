@@ -3,13 +3,12 @@
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
-
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
-
+<script type="./resources/js/bootstrap.min.js" >  </script>
 	<title>Login Form</title>
 </head>
 <body>
-<script type="./resources/js/bootstrap.min.js" >  </script>
+
 
       
 <form name="loginForm" action="./login" method ="POST">

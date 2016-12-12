@@ -3,10 +3,12 @@
 <html>
 <head>
 <title>Donation Form</title>
-</head>
+<script type="./resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
-
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
+</head>
+
+
 <body>
 	<!--   
 <script>
@@ -20,7 +22,10 @@ function validateForm() {
  onsubmit="return validateForm()" 
 </script> -->
 
+<<<<<<< HEAD
 <script type="./resources/js/bootstrap.min.js">	</script>
+=======
+>>>>>>> b97be1ec33876cb03268264ee1806393eff1cf5e
 
 
  	<h1>Submit Donation Here</h1>
@@ -37,5 +42,9 @@ function validateForm() {
 	</form> 
 	<br> <a href="./CompanyDonations">Check your companies profile</a>
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> b97be1ec33876cb03268264ee1806393eff1cf5e
 </body>
 </html>
