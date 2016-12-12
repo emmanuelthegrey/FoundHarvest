@@ -28,8 +28,8 @@
       <a class="navbar-brand" href="#">Found Harvest</a>
     </div>
      <ul class="nav navbar-nav navbar-right">
-            <li><a href="" target="_blank">Colton's Right</a></li>
-            <li><a href="" target="_blank">Life has no meaning</a></li>
+            <li><a href="./adminHomeQueue">Previous Donations</a></li>
+            <li><a href="./">Log Out</a></li>
           </ul>
   </div>
 </nav>
@@ -80,7 +80,5 @@
 	</c:forEach>
 	</table>
 	 
-	<br>
-	<a href="./adminHomeQueue"> Check previous donations! </a>
 </body>
 </html>

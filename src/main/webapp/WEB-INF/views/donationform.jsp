@@ -10,6 +10,19 @@
 
 
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Found Harvest</a>
+    </div>
+     <ul class="nav navbar-nav navbar-right">
+            <li><a href="./CompanyDonations">Company Profile</a></li>
+            <li><a href="./">Log Out</a></li>
+          </ul>
+  </div>
+</nav>
+
 	<!--   
 <script>
 function validateForm() {
@@ -40,8 +53,6 @@ function validateForm() {
 			type="text" name="enterWeight"> <br> <input
 			type="submit" value="Submit">
 	</form>
-	<br>
-	<a href="./CompanyDonations">Check your companies profile</a>
 
 	<script>
 		/* function validateDonation() {
