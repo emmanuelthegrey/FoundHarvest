@@ -24,6 +24,7 @@
     </div>
      <ul class="nav navbar-nav navbar-right">
             <li><a href="./adminHome">Pending Donations</a></li>
+            <li><a href="./adminRecentDonations">Recent Donations</a></li>
             <li><a href="./">Log Out</a></li>
           </ul>
   </div>
@@ -43,7 +44,7 @@ function printDiv(printableArea) {
 
 </script>
 
-	<h1>Completed Donations In Last 30 Days </h1>
+	<h1>All Completed Donations </h1>
 	<h2> </h2>
 				<div id="printableArea">
 	
@@ -76,7 +77,7 @@ function printDiv(printableArea) {
 			           
 		
 			<td>
-			<form action="remove" method="get">
+			<form action="removeFromAllDonations" method="get">
                 <input type="hidden" name="remove" value="${item.donation.idCompanyDonation}" />
                 <input type ="submit" class="btn btn-danger" value="Remove">
             </form>
@@ -84,7 +85,7 @@ function printDiv(printableArea) {
                   
 	</c:forEach>
 	</table>
-		 <input type="button" onclick="printDiv('printableArea')" value="Print Reciept" />
+		 <input type="button" onclick="printDiv('printableArea')" value="Print Receipt" />
 	
 	</div>
 	
