@@ -320,12 +320,12 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
+	@RequestMapping(value = "/remove", method = RequestMethod.GET)
 	public String cancel(Model model, HttpServletRequest request) {
-		DAO_Donation.cancelDonation(Integer.parseInt(request.getParameter("cancel")));
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("cancel")));
 		
 		
-		return "cancel";
+		return "remove";
 	}
 	
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
@@ -338,6 +338,13 @@ public class HomeController {
 	public String donationForm(Model model, HttpServletRequest request) {
 
 		return "donationform";
+	}
+	
+	@RequestMapping(value = "/removeFromCompanyDonationPage", method = RequestMethod.GET)
+	public String removeFromCompanyDonationPage(Model model, HttpServletRequest request) {
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("cancel")));
+		
+		return "removeFromCompanyDonationPage";
 	}
 	
 

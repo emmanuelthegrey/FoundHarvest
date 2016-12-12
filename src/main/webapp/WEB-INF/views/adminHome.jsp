@@ -46,7 +46,7 @@
 			<th>Last Day To Pickup</th>
 			<th>Phone Number</th>
 			<th>Email</th>
-			<th>Cancel </th>		
+			<th>Remove </th>		
 			<th>Confirm </th>
 						
 		</tr>
@@ -63,9 +63,9 @@
 			<td>${item.company.email } </td>
 		
 			<td>
-			<form action="cancel" method="get">
+			<form action="remove" method="get">
                 <input type="hidden" name="cancel" value="${item.donation.idCompanyDonation}" />
-                <input type ="submit" value="cancel">
+                <input type ="submit" value="Remove">
             </form>
             </td>
             <td>
@@ -74,7 +74,7 @@
                 <input type="hidden" name="tweet" value="${item.company.twitterName}" />
                 <input type="hidden" name="companyName" value="${item.company.companyName}" />
                 <input type="hidden" name="productDescription" value="${item.donation.productDescription}" />
-                <input type="submit" value="confirm">
+                <input type="submit" value="Confirm">
             </form>
             </td>
 	</c:forEach>
