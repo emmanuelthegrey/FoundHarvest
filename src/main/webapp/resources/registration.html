@@ -10,20 +10,84 @@
 
 <body>
 	
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Found Harvest</a>
+    </div>
+    
+  </div>
+</nav>
 	
 	<h1>Create Found Harvest User Account</h1>
 
 	<div>
 		<form name="RegistrationForm" class="form-horizontal" action="../submittedRegistration" onsubmit="return validateForm()" method="post">
-			Company Name:<input type="text" name="companyName"> <br>
-			Company Address:<input type="text" name="address"> <br>
-			Main Contact:<input type="text" name="contact"><br>
-			Phone Number:<input type="text" name="phoneNumber" placeholder="xxx-xxx-xxxx"><br>
-			Email:<input type="text" name="email"> <br> 
-			Twitter Name @:<input type="text" name="myText" placeholder="twittername"><br> 
-			User Name:<input type="text" name="username"><br> 
-			Password:<input type="password" name="password"><br> <input type="submit"
-				value="Submit">
+		<fieldset>
+		<legend>Registration</legend>
+		
+			
+			 <div class="form-group">
+      <label for="inputcompanyname" class="col-lg-2 control-label">Company Name</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="companyName" placeholder="Company Name">
+      </div>
+		</div>	
+			<div class="form-group">
+      <label for="inputCompanyAddress" class="col-lg-2 control-label">Company Address</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="address" placeholder="Commpany Address">
+      </div>
+    </div>
+    	<div class="form-group">
+      <label for="inputMainContact" class="col-lg-2 control-label">Main Contact</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="contact" placeholder="Main Contact">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPhoneNumber" class="col-lg-2 control-label">Phone Number</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number">
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="email" placeholder="Email">
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="inputTwitterName" class="col-lg-2 control-label">Twitter Name @</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="myText" placeholder="twittername">
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="inputUserName" class="col-lg-2 control-label">User Name</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="username" placeholder="Username">
+      </div>
+    </div>
+      <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="password" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-4 col-lg-offset-2">
+			 <input type="submit" class="btn btn-default" value="Submit">
+			 </div>
+			 </div>
+				
+				</fieldset>
 		</form>
 		
 

@@ -6,7 +6,10 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
-
+<%
+int timeout = 3;
+response.setHeader("Refresh", timeout + "; URL = login/");
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Submitted Registration</title>
 </head>
