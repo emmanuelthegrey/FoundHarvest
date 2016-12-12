@@ -10,9 +10,9 @@
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <body>
-<script type="./resources/js/bootstrap.min.js">
+<script type="./resources/js/bootstrap.min.js"></script>
 thanks for donating!
-<a href="./adminHome">Return to current donations</a>
-</script>
+<a href="./adminHome">Return to pending donations</a>
+
 </body>
 </html>
