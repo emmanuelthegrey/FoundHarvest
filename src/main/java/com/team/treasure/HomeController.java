@@ -340,5 +340,12 @@ public class HomeController {
 		return "donationform";
 	}
 	
+	@RequestMapping(value = "/removeFromCompanyDonationPage", method = RequestMethod.GET)
+	public String removeFromCompanyDonationPage(Model model, HttpServletRequest request) {
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("cancel")));
+		
+		return "removeFromCompanyDonationPage";
+	}
+	
 
 }
