@@ -10,10 +10,10 @@
 <title>Donation Cancelled</title>
 </head>
 <body>
-<script type="./resources/js/bootstrap.min.js">
-You've cancelled the donation!
+<script type="./resources/js/bootstrap.min.js"></script>
+You've removed the donation!
 
 <a href="./adminHome">Return to Admin Home</a>
-</script>
+
 </body>
 </html>
