@@ -43,7 +43,7 @@ function printDiv(printableArea) {
 
 </script>
 
-	<h1>Donations in the Queue </h1>
+	<h1>Completed Donations In Last 30 Days </h1>
 	<h2> </h2>
 				<div id="printableArea">
 	
