@@ -15,7 +15,7 @@
 
 <%
 int timeout = 3;
-response.setHeader("Refresh", timeout + "; URL = login.jsp");
+response.setHeader("Refresh", timeout + "; URL = login/");
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
