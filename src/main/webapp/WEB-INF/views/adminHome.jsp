@@ -47,7 +47,7 @@
 			<th>Last Day To Pickup</th>
 			<th>Phone Number</th>
 			<th>Email</th>
-			<th>Cancel </th>		
+			<th>Remove </th>		
 			<th>Confirm </th>
 						
 		</tr>
@@ -64,9 +64,9 @@
 			<td>${item.company.email } </td>
 		
 			<td>
-			<form action="cancel" method="get">
+			<form action="remove" method="get">
                 <input type="hidden" name="cancel" value="${item.donation.idCompanyDonation}" />
-                <input type ="submit" class="btn btn-danger" value="Cancel">
+                <input type ="submit" class="btn btn-danger" value="Remove">
             </form>
             </td>
             <td>

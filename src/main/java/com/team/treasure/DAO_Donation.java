@@ -83,7 +83,7 @@ import java.util.List;
             hibernateSession.getTransaction().begin();
 
             List<Donation> donations = hibernateSession.createQuery("FROM Donation").list();
-
+            
             hibernateSession.getTransaction().commit();
             hibernateSession.close();
 

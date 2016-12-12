@@ -39,6 +39,7 @@
 				<th>Donation Description</th>
 				<th>Weight of Donation</th>
 				<th>Date Confirmed</th>
+				<th>Remove</th>
 			</tr>
 			<c:forEach items="${itemList}" var="item">
 				<tr>
@@ -53,7 +54,12 @@
       				 <td>${item.donation.confirmationDate }</td>
    					</c:otherwise>
 					</c:choose>
-					
+					<td>
+					<form action="removeFromCompanyDonationPage" method="get">
+                	<input type="hidden" name="cancel" value="${item.donation.idCompanyDonation}" />
+                	<input type ="submit" value="Remove">
+           			</form>
+					</td>
 			</c:forEach>
 		</table>
 	</div>
