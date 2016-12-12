@@ -20,7 +20,8 @@ function validateForm() {
  onsubmit="return validateForm()" 
 </script> -->
 
-<script type="./resources/js/bootstrap.min.js">
+<script type="./resources/js/bootstrap.min.js">	</script>
+
 
  	<h1>Submit Donation Here</h1>
 	<form name="DonationForm" action="./submittedDonation" method="POST">
@@ -36,6 +37,5 @@ function validateForm() {
 	</form> 
 	<br> <a href="./CompanyDonations">Check your companies profile</a>
 	
-	</script>
 </body>
 </html>

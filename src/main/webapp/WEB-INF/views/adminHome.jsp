@@ -8,6 +8,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<style></style>
+
+
+
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
@@ -17,9 +22,23 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Found Harvest</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Found Harvest</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+  </div>
+</nav>
+
+
 	<h1>Upcoming Pick Ups! </h1>
-	<table class="sortable" border="1">
-		<tr>
+	<table class="sortable table table-striped table-hover" border="1" >
+		<tr class ="success">
 			
 			<th>Company Name</th> 
 			<th>Main Contact</th>

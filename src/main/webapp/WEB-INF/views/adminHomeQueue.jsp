@@ -35,8 +35,8 @@ function printDiv(printableArea) {
 	<h2> </h2>
 				<div id="printableArea">
 	
-	<table class="sortable" border="1">
-		<tr>
+	<table class="sortable table table-striped table-hover" border="1">
+		<tr class ="success">
 			
 			<th>Company Name</th> 
 			<th>Main Contact</th>

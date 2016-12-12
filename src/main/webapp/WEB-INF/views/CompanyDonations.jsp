@@ -26,15 +26,15 @@
 
 		document.body.innerHTML = originalContents;
 	}
-</script>
+	</script>
 
 <body>
 	<div id="printableArea">
 
 		<h1>${companyName}</h1>
 		<h2>Submitted Donations</h2>
-		<table class="sortable" border="1">
-			<tr>
+		<table class="sortable table table-striped table-hover" border="1">
+			<tr class ="success">
 				<th>Date Submitted</th>
 				<th>Donation Description</th>
 				<th>Weight of Donation</th>
