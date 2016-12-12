@@ -302,8 +302,8 @@ public class HomeController {
 		return "CompanyDonations";
 	}
 
-	@RequestMapping(value = "/adminHomeQueue", method = RequestMethod.GET)
-	public String adminHomeQueue(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/adminRecentDonations", method = RequestMethod.GET)
+	public String adminRecentDonations(Model model, HttpServletRequest request) {
 		//referencing ItemsForPickup object to build table
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 		
@@ -326,13 +326,32 @@ public class HomeController {
 
 		model.addAttribute("itemList", items);
 
-		return "adminHomeQueue";
+		return "adminRecentDonations";
+	}
+	
+	@RequestMapping(value = "/adminAllDonations", method = RequestMethod.GET)
+	public String adminAllDonations(Model model, HttpServletRequest request) {
+		//referencing ItemsForPickup object to build table
+		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
+		
+		Iterator<itemsForPickup> iter = items.iterator();
+        while (iter.hasNext()) {
+        	itemsForPickup tempItem = iter.next();
+        	
+			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("complete"))){
+					 iter.remove();
+			}
+		}
+
+		model.addAttribute("itemList", items);
+
+		return "adminAllDonations";
 	}
 
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
 	public String cancel(Model model, HttpServletRequest request) {
-		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("cancel")));
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("remove")));
 		
 		
 		return "remove";
@@ -355,6 +374,20 @@ public class HomeController {
 		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("cancel")));
 		
 		return "removeFromCompanyDonationPage";
+	}
+	
+	@RequestMapping(value = "/removeFromRecentDonations", method = RequestMethod.GET)
+	public String removeFromRecentDonations(Model model, HttpServletRequest request) {
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("remove")));
+		
+		return "removeFromRecentDonations";
+	}
+	
+	@RequestMapping(value = "/removeFromAllDonations", method = RequestMethod.GET)
+	public String removeFromAllDonations(Model model, HttpServletRequest request) {
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("remove")));
+		
+		return "removeFromAllDonations";
 	}
 	
 

@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="./resources/css/bootstrap.Scss">
+<link rel="stylesheet" href="./resources/css/bootstrap.css">
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,6 +16,19 @@
 <title>Donations in the Queue</title>
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Found Harvest</a>
+    </div>
+     <ul class="nav navbar-nav navbar-right">
+            <li><a href="./adminHome">Pending Donations</a></li>
+            <li><a href="./adminRecentDonations">Recent Donations</a></li>
+            <li><a href="./">Log Out</a></li>
+          </ul>
+  </div>
+</nav>
 
 <script>
 function printDiv(printableArea) {
@@ -31,7 +44,7 @@ function printDiv(printableArea) {
 
 </script>
 
-	<h1>Completed Donations In Last 30 Days </h1>
+	<h1>All Completed Donations </h1>
 	<h2> </h2>
 				<div id="printableArea">
 	
@@ -64,19 +77,17 @@ function printDiv(printableArea) {
 			           
 		
 			<td>
-			<form action="cancel" method="get">
-                <input type="hidden" name="idCompanyDonation" value="${item.donation.idCompanyDonation}" />
-                <input type ="submit" value="cancel">
+			<form action="removeFromAllDonations" method="get">
+                <input type="hidden" name="remove" value="${item.donation.idCompanyDonation}" />
+                <input type ="submit" class="btn btn-danger" value="Remove">
             </form>
             </td>
                   
 	</c:forEach>
 	</table>
-		 <input type="button" onclick="printDiv('printableArea')" value="Print Reciept" />
+		 <input type="button" onclick="printDiv('printableArea')" value="Print Receipt" />
 	
 	</div>
-	<br> 
 	
-	<a href="./adminHome"> Back to upcoming donations </a>
 </body>
 </html>
