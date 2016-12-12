@@ -332,7 +332,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
 	public String cancel(Model model, HttpServletRequest request) {
-		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("cancel")));
+		DAO_Donation.deleteDonation(Integer.parseInt(request.getParameter("remove")));
 		
 		
 		return "remove";

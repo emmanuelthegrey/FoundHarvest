@@ -76,8 +76,8 @@ function printDiv(printableArea) {
 			           
 		
 			<td>
-			<form action="cancel" method="get">
-                <input type="hidden" name="idCompanyDonation" value="${item.donation.idCompanyDonation}" />
+			<form action="remove" method="get">
+                <input type="hidden" name="remove" value="${item.donation.idCompanyDonation}" />
                 <input type ="submit" class="btn btn-danger" value="Remove">
             </form>
             </td>
