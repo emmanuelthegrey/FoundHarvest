@@ -309,7 +309,17 @@ public class HomeController {
 		
 		Iterator<itemsForPickup> iter = items.iterator();
         while (iter.hasNext()) {
-			if (!(iter.next().getDonation().getStatus().equalsIgnoreCase("complete"))) {
+        	itemsForPickup tempItem = iter.next();
+        	Date itemDate = tempItem.getDonation().getExpirationDate();
+        	Calendar oneMonthAgo = Calendar.getInstance();
+        	oneMonthAgo.add(Calendar.MONTH, -1);
+        	
+        	System.out.println("One Month Ago: " + oneMonthAgo.getTime());
+        	System.out.println("Date of Item = " + itemDate);
+        	System.out.println("Item Date after oneMonthAgo?" + itemDate.after(oneMonthAgo.getTime()));
+        	//LocalDate localExpirationDate = itemDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			if (!(tempItem.getDonation().getStatus().equalsIgnoreCase("complete"))|| 
+				(itemDate.before(oneMonthAgo.getTime()))) {
 					 iter.remove();
 			}
 		}
