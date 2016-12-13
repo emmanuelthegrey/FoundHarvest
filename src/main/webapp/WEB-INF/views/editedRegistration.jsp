@@ -25,7 +25,7 @@
 	<h1>Edit Your Account Information</h1>
 
 	<div>
-		<form name="RegistrationForm" class="form-horizontal" action="../editedRegistration" onsubmit="return validateForm()" method="post">
+		<form name="RegistrationForm" class="form-horizontal" action="./editedConfirmation" onsubmit="return validateForm()" method="POST">
 		<fieldset>
 		<legend></legend>
 		
@@ -81,6 +81,7 @@
     </div>
     <div class="form-group">
       <div class="col-lg-4 col-lg-offset-2">
+      		 <input type="hidden" name="companyID" value="${companyProfile.companyID}" />
 			 <input type="submit" class="btn btn-default" value="Submit">
 			 </div>
 			 </div>

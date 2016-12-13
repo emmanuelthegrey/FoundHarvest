@@ -32,8 +32,8 @@ public class DAO_Profile {
 	}
 
 	public static int addCompanyProfile(CompanyProfile cp) {
-		
-		//encrypts password of passed in companyProfile
+
+		// encrypts password of passed in companyProfile
 		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 		String encrypted = passwordEncryptor.encryptPassword(cp.getPassword());
 		cp.setPassword(encrypted);
@@ -42,25 +42,26 @@ public class DAO_Profile {
 			setupFactory();
 		Session hibernateSession = factory.openSession();
 		hibernateSession.getTransaction().begin();
-		
-		//checks for company profiles with existing usernames
-		
-		Query query=  hibernateSession.createQuery("from CompanyProfile where userName=?");
-		CompanyProfile user=(CompanyProfile)query.setString(0,cp.getUserName()).uniqueResult();
-		
-		//if username already taken, closes transaction and retuns 0
-		if(user!=null){
+
+		// checks for company profiles with existing usernames
+
+		Query query = hibernateSession.createQuery("from CompanyProfile where userName=?");
+		CompanyProfile user = (CompanyProfile) query.setString(0, cp.getUserName()).uniqueResult();
+
+		// if username already taken, closes transaction and retuns 0
+		if (user != null) {
 			hibernateSession.getTransaction().commit();
 			hibernateSession.close();
 			return 0;
-		}else{
-			//else if username doesn't exist, adds the profile to the database, and returns id
+		} else {
+			// else if username doesn't exist, adds the profile to the database,
+			// and returns id
 			int id = (Integer) hibernateSession.save(cp);
 			hibernateSession.getTransaction().commit();
 			hibernateSession.close();
 			return id;
-		} 
-		
+		}
+
 	}
 
 	public static CompanyProfile deleteCompanyProfile(int idCompanyProfile) {
@@ -89,42 +90,45 @@ public class DAO_Profile {
 
 	public static CompanyProfile checkLogin(String userName, String password) {
 		// System.out.println("DEBUG: check password=" + password);
-		
+
 		if (factory == null)
 			setupFactory();
 		Session hibernateSession = factory.openSession();
 
 		// prepared statement to protect against injection
-		// Returns a company proflie object where the username equals the passed in username
-		Query<CompanyProfile> sql = hibernateSession.createQuery("FROM CompanyProfile WHERE userName=:userName", CompanyProfile.class);
-		
-		//sets the '=:userName' parameter, to the passed in parameter
-		sql.setParameter("userName", userName);
-		
-		//initializes a null companyProfile object
-		CompanyProfile companyProfile = null;
-		try{
-			//sets companyProfile and returns single object based on sql query above
-			companyProfile = sql.getSingleResult();
-			}
-			catch (NoResultException nre){
-				return null;
-			}
+		// Returns a company proflie object where the username equals the passed
+		// in username
+		Query<CompanyProfile> sql = hibernateSession.createQuery("FROM CompanyProfile WHERE userName=:userName",
+				CompanyProfile.class);
 
-		//make sure we can close the session
+		// sets the '=:userName' parameter, to the passed in parameter
+		sql.setParameter("userName", userName);
+
+		// initializes a null companyProfile object
+		CompanyProfile companyProfile = null;
 		try {
-				// hibernateSession.getTransaction().commit();
-				hibernateSession.close();
-			} catch (Exception e) {
-				System.out.println("DEBUG: Error caught: " + e);
-			}
-		
-		//System.out.println(companyProfile.getCompanyName());
-		
-		//makes non decryptable passwordEncryptor object
+			// sets companyProfile and returns single object based on sql query
+			// above
+			companyProfile = sql.getSingleResult();
+		} catch (NoResultException nre) {
+			return null;
+		}
+
+		// make sure we can close the session
+		try {
+			// hibernateSession.getTransaction().commit();
+			hibernateSession.close();
+		} catch (Exception e) {
+			System.out.println("DEBUG: Error caught: " + e);
+		}
+
+		// System.out.println(companyProfile.getCompanyName());
+
+		// makes non decryptable passwordEncryptor object
 		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
-		
-		//checks if the given password is equal to the hashed password of the company
+
+		// checks if the given password is equal to the hashed password of the
+		// company
 		if (passwordEncryptor.checkPassword(password, companyProfile.getPassword())) {
 			// System.out.println("DEBUG: Password passed");
 			return companyProfile;
@@ -133,7 +137,7 @@ public class DAO_Profile {
 			return null;
 		}
 	}
-	
+
 	public static CompanyProfile getCompanyProfileById(int idCompanyProfile) {
 		if (factory == null)
 			setupFactory();
@@ -144,5 +148,21 @@ public class DAO_Profile {
 		hibernateSession.close();
 		return companyProfile;
 	}
+
+	public static void updateCompanyProfile(CompanyProfile cp) {
+
+		// encrypts password of passed in companyProfile
+		StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+		String encrypted = passwordEncryptor.encryptPassword(cp.getPassword());
+		cp.setPassword(encrypted);
+		
+		if (factory == null)
+			setupFactory();
+		Session hibernateSession = factory.openSession();
+		hibernateSession.getTransaction().begin();
+		hibernateSession.update(cp);
+		hibernateSession.getTransaction().commit();
+		hibernateSession.close();
+		}
 
 }

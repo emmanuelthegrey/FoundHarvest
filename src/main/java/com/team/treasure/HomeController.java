@@ -396,7 +396,8 @@ public class HomeController {
 	public String editedRegistration(Model model, HttpServletRequest request) {
 
 		int companyID = 0;
-
+		
+		//uses cookie from login to get the companyID
 		Cookie[] cookies = request.getCookies();
 		for (Cookie c : cookies) {
 			if (c.getName().equalsIgnoreCase("userCompanyID")) {
@@ -404,24 +405,35 @@ public class HomeController {
 				// System.out.println(companyID);
 			}
 		}
-
+		
+		//gets the company by the id to pre populate the page
 		CompanyProfile companyToEdit = DAO_Profile.getCompanyProfileById(companyID);
 		model.addAttribute("companyProfile", companyToEdit);
 		
-		CompanyProfile cp = new CompanyProfile();
-
-		cp.setCompanyName(request.getParameter("companyName"));
-		cp.setAddress(request.getParameter("address"));
-		cp.setMainContact(request.getParameter("contact"));
-		cp.setCompanyPhoneNumber(request.getParameter("phoneNumber"));
-		cp.setEmail(request.getParameter("email"));
-		cp.setTwitterName(request.getParameter("twitter"));
-		cp.setUserName(request.getParameter("username"));
-		cp.setPassword(request.getParameter("password"));
-		
-		
-
 		return "editedRegistration";
 	}
+	
+	@RequestMapping(value = "/editedConfirmation", method = RequestMethod.POST)
+	public String editedConfirmation(Model model, HttpServletRequest request) {
+	//initializes a blank company profile object to add changed parameters.
+	CompanyProfile cp = new CompanyProfile();
 
+	cp.setCompanyName(request.getParameter("companyName"));
+	cp.setAddress(request.getParameter("address"));
+	cp.setMainContact(request.getParameter("contact"));
+	cp.setCompanyPhoneNumber(request.getParameter("phoneNumber"));
+	cp.setEmail(request.getParameter("email"));
+	cp.setTwitterName(request.getParameter("twitter"));
+	cp.setUserName(request.getParameter("username"));
+	cp.setCompanyID(Integer.parseInt(request.getParameter("companyID")));
+	
+	//checks if they've altered the password before saving
+	if (request.getParameter("password") != "") {
+	cp.setPassword(request.getParameter("password"));
+	}
+	
+	DAO_Profile.updateCompanyProfile(cp);
+	
+	return "editedConfirmation";
+	}
 }
