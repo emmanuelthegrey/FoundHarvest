@@ -14,6 +14,21 @@ response.setHeader("Refresh", timeout + "; URL = http://localhost:8080/treasure/
 <title>Username Taken</title>
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Found Harvest</a>
+    </div>
+     <ul class="nav navbar-nav navbar-right">
+            <li><a href="./donationform">Donation Form</a></li>
+            <li><a href="./">Login</a></li>
+          </ul>
+  </div>
+</nav>
+
+
+
 <script type="./resources/js/bootstrap.min.js" >  </script>
 
 	<h1>Sorry! </h1>

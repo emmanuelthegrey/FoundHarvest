@@ -17,7 +17,7 @@
       <a class="navbar-brand" href="#">Found Harvest</a>
     </div>
      <ul class="nav navbar-nav navbar-right">
-            <li><a href="./CompanyDonations">Company Profile</a></li>
+            <li><a href="./CompanyDonations"> Your Company Donations</a></li>
             <li><a href="./">Log Out</a></li>
           </ul>
   </div>
