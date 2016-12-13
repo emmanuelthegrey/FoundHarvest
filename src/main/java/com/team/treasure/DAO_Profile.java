@@ -1,6 +1,9 @@
 package com.team.treasure;
 
 import java.util.List;
+
+import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -89,14 +92,22 @@ public class DAO_Profile {
 		// prepared statement to protect against injection
 		Query<CompanyProfile> sql = hibernateSession.createQuery("FROM CompanyProfile WHERE userName=:userName", CompanyProfile.class);
 		sql.setParameter("userName", userName);
-		CompanyProfile companyProfile = sql.getSingleResult();
+		
+		CompanyProfile companyProfile = null;
+		try{
+			companyProfile = sql.getSingleResult();
+			}
+			catch (NoResultException nre){
+				return null;
+			}
 
+		
 		try {
-			// hibernateSession.getTransaction().commit();
-			hibernateSession.close();
-		} catch (Exception e) {
-			System.out.println("DEBUG: Error caught: " + e);
-		}
+				// hibernateSession.getTransaction().commit();
+				hibernateSession.close();
+			} catch (Exception e) {
+				System.out.println("DEBUG: Error caught: " + e);
+			}
 		
 		//System.out.println(companyProfile.getCompanyName());
 		
