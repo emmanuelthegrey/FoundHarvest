@@ -19,6 +19,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="./resources/sorttable.js"/></script>
 <title>Admin Home</title>
+<style>
+  .margin-set {
+  margin-left: 50px;
+  margin-right: 50px;
+  }
+</style>
 </head>
 <body>
 
@@ -35,9 +41,9 @@
   </div>
 </nav>
 
-
+	<div class = "margin-set">
 	<h1>Upcoming Pick Ups! </h1>
-	<table class="sortable table table-striped table-hover" border="1" >
+	<table class="sortable table table-striped table-hover " border="1">
 		<tr class ="success">
 			
 			<th>Company Name</th> 
@@ -80,6 +86,6 @@
             </td>
 	</c:forEach>
 	</table>
-	 
+	</div> 
 </body>
 </html>
