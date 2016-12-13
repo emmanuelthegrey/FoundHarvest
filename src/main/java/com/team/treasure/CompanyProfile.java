@@ -1,6 +1,14 @@
 package com.team.treasure;
 
 public class CompanyProfile {
+	//food drives
+	//add faq
+	
+	//must be non residential
+//we can pick up bet 24-72
+	//when do you need it picked up, requested pick up
+	
+	
 
 	private int companyID;
 	private String companyName;

@@ -13,6 +13,8 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Found Harvest</a>
+      </div>
+      </div>
    
 </nav>
 
