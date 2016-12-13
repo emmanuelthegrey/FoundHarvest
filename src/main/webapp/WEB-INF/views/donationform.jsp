@@ -92,7 +92,6 @@
 	
 	//validation for blanks
 	function validateDonation() {
-		radioValidation();
 		
 		
 		
@@ -117,9 +116,9 @@
 			
 			return false;
 			
-		}else{
-			return true;
-	} 
+		}
+	  	return radioValidation();
+		
 	}
 	
 	
@@ -129,20 +128,15 @@
 	//validation for radio
 	 	function radioValidation() {
 			var packaged = document.getElementsByName('packaged');
-			var weight = document.getElementsByName('weight');
-			
 			
 			if (packaged[1].checked == true) {
 				alert("We cannot pick this item up");
 				
 				return false;
 				}
-			if (weight[1].checked == true) {
-				alert("We cannot pick this item up");
+			
 				
-				return false;
-				
-			} else {
+		
 
 				if (packaged[0].checked == false
 						&& packaged[1].checked == false) {
@@ -151,14 +145,10 @@
 					return false;
 
 				}
-				if (weight[0].checked == false && weight[1].checked == false) {
-					alert("Please select an option");
-					
-					return false;	}
-		
+				
 			return true;
 	}
-	}		
+		
 	 
 		
 </script>
