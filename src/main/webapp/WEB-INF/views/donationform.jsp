@@ -23,35 +23,68 @@
   </div>
 </nav>
 
-	<!--   
-<script>
-function validateForm() {
-    var x = document.forms["form1"]["firstName"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
-}
- onsubmit="return validateForm()" 
-</script> -->
+
 
 
 
 	<h1>Submit Donation Here</h1>
 
-	<form name="DonationForm" action="./submittedDonation"
+	<form name="DonationForm" class="form-horizontal" action="./submittedDonation"
 		onSubmit="return validateDonation()" method="POST">
-		Product Description: <input type="text" name="productDescription">
-		<br> How many days do we have to pick this up? <input type="text"
-			name="expirationDate"> <br> Is food packaged:<br> <input
-			type="radio" name="packaged" id="yespack" value="yes"> Yes<br>
-		<input type="radio" name="packaged" id="nopack" value="no"> No<br>
-		Is food greater than 200lbs:<br> <input type="radio"
-			name="weight" id="yespack" value="yes"> Yes<br> <input
-			type="radio" name="weight" id="nopack" value="No"> No<br>
-		Please enter estimated weight of package(s) in (lbs): <input
-			type="text" name="enterWeight"> <br> <input
-			type="submit" value="Submit">
+		<fieldset>
+		<legend>Donation Form</legend>
+		
+		<div class="form-group">
+      <label for="inputdescription" class="col-lg-2 control-label">Product Description</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="productDescription" placeholder="Quick Description of what is being donated">
+      </div>
+		</div>	
+		
+		
+		<div class="form-group">
+      <label for="daysToPickUp" class="col-lg-2 control-label">How many days do we have to pick this up?</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="expirationDate">
+      </div>
+		</div>
+		
+		
+		<div class="form-group">
+      <label for="estimatedLBS" class="col-lg-2 control-label">Please enter estimated weight of package(s) in (lbs)</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" name="enterWeight">
+      </div>
+		</div>
+		
+		  <div class="form-group">
+      <label class="col-lg-2 control-label">Is Food Packaged?</label>
+      <div class="col-lg-4">
+        <div class="radio">
+          <label>
+            <input type="radio" name="packaged" id="yespack" value="yes">
+            Yes
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="packaged" id="nopack" value="no">
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+		<div class="form-group">
+      <div class="col-lg-4 col-lg-offset-2">
+			 <input type="submit" class="btn btn-default" value="Submit">
+			 </div>
+			 </div>
+		
+		 
+		 
+		
+		 
+			</fieldset>
 	</form>
 
 	<script>
