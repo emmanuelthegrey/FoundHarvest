@@ -18,15 +18,33 @@
    
 </nav>
 
+<h1>Log in</h1>
       
-<form name="loginForm" class="form-horizontal" action="./login" method ="POST">
-	<h1>Log in</h1>
+<form name="loginForm" class="form-horizontal" action="./login" onSubmit="return validateLogin()" method ="POST">
+	
 	<input type="text" name="username" placeholder="Username" required><br>
 	<input type="password" name="password" placeholder="Password" required><br>
 	<input type="submit" value ="Login"> <br>
 	
 	<a href="./resources/registration.html"> First time donating? Sign up here!</a>
 </form>
+
+<script>
+function validateLogin() {
+    
+	var un = document.forms["loginForm"]["username"].value;
+    var pswrd = document.forms["loginForm"]["password"].value;
+
+    if (un === "") {
+        alert("Username must be filled out");
+        return false;
+    }else if(pswrd === "") {
+    	alert("Password must be filled out");
+    	return false;
+    }
+}
+</script>
+
 
 </body>
 </html>

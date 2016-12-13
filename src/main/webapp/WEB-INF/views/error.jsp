@@ -27,12 +27,12 @@ response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/"
   </div>
 </nav>
 
-<script type="./resources/js/bootstrap.min.js">
+<script type="./resources/js/bootstrap.min.js"> </script>
 
 
 The place you're going to doesn't exist!
 
-Try Again!
-</script>
+We'll have you try again in 3 seconds!
+
 </body>
 </html>

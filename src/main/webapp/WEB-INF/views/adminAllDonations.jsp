@@ -18,7 +18,7 @@
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="./resources/sorttable.js" /></script>
-<title>Donations in the Queue</title>
+<title>All Completed Donations</title>
 <style>
   .margin-set {
   margin-left: 50px;
@@ -36,7 +36,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="./adminHome">Up Coming Pickups</a></li>
 			<li><a href="./adminRecentDonations">Recent Donations</a></li>
-			<li><a href="./">Log in</a></li>
+			<li><a href="./">Log Out</a></li>
 		</ul>
 	</div>
 	</nav>
