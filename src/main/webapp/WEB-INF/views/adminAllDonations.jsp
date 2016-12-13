@@ -55,11 +55,11 @@ function printDiv(printableArea) {
 
 </script>
 
-
+	<div class="margin-set">
 	<h1>All Completed Donations</h1>
 	<h2></h2>
 	<div id="printableArea">
-		<div class="margin-set">
+		
 			<table class="sortable table table-striped table-hover" border="1">
 				<tr class="success">
 

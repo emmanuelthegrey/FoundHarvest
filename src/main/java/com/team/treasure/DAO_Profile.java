@@ -120,5 +120,16 @@ public class DAO_Profile {
 			return null;
 		}
 	}
+	
+	public static CompanyProfile getCompanyProfileById(int idCompanyProfile) {
+		if (factory == null)
+			setupFactory();
+		Session hibernateSession = factory.openSession();
+		CompanyProfile companyProfile = (hibernateSession.get(CompanyProfile.class, idCompanyProfile));
+		hibernateSession.getTransaction().begin();
+		hibernateSession.getTransaction().commit();
+		hibernateSession.close();
+		return companyProfile;
+	}
 
 }

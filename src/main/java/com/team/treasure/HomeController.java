@@ -391,4 +391,24 @@ public class HomeController {
 	}
 	
 
+	@RequestMapping(value = "/editedRegistration", method = RequestMethod.GET)
+	public String editedRegistration(Model model, HttpServletRequest request) {
+	
+		int companyID = 0;
+		
+		Cookie[] cookies = request.getCookies();
+		for (Cookie c : cookies) {
+			if (c.getName().equalsIgnoreCase("userCompanyID")) {
+				companyID = (Integer.parseInt(c.getValue()));
+				//System.out.println(companyID);
+			}
+		}
+		
+		CompanyProfile companyToEdit = DAO_Profile.getCompanyProfileById(companyID);
+		model.addAttribute("companyProfile", companyToEdit);
+		
+		return "editedRegistration";
+	}
+	
+
 }
