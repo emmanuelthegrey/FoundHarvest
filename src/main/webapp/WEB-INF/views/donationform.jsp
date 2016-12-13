@@ -38,7 +38,7 @@
 		<div class="form-group">
       <label for="inputdescription" class="col-lg-2 control-label">Product Description</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" name="productDescription" placeholder="Quick Description of what is being donated">
+        <input type="text" class="form-control" name="productDescription" placeholder="Brief description of what is being donated">
       </div>
 		</div>	
 		
@@ -46,7 +46,7 @@
 		<div class="form-group">
       <label for="daysToPickUp" class="col-lg-2 control-label">How many days do we have to pick this up?</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" name="expirationDate">
+        <input type="text" class="form-control" name="expirationDate" placeholder="e.g. 1 ">
       </div>
 		</div>
 		
@@ -54,7 +54,7 @@
 		<div class="form-group">
       <label for="estimatedLBS" class="col-lg-2 control-label">Please enter estimated weight of package(s) in (lbs)</label>
       <div class="col-lg-4">
-        <input type="text" class="form-control" name="enterWeight">
+        <input type="text" class="form-control" name="enterWeight" placeholder="e.g. 500">
       </div>
 		</div>
 		
