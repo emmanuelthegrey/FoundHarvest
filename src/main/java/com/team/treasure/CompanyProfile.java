@@ -5,7 +5,7 @@ public class CompanyProfile {
 	//add faq
 	
 	//must be non residential
-//we can pick up bet 24-72
+	//we can pick up bet 24-72
 	//when do you need it picked up, requested pick up
 	
 	
