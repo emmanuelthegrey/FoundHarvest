@@ -108,11 +108,11 @@
 			
 			return false;
 		} else if (reg.test(ed) === false) {
-			alert("Expiration must be filled out");
+			alert("Please enter in a number");
 			
 			return false;
 		}else if (reg.test(ew) === false) {
-			alert("Weight must be filled out");
+			alert("Please enter in a number");
 			
 			return false;
 			
