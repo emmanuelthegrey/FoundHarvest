@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <%
 int timeout = 3;
-response.setHeader("Refresh", timeout + "; URL = registration/");
+response.setHeader("Refresh", timeout + "; URL = http://localhost:8080/treasure/resources/registration.html");
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Username Taken</title>
