@@ -46,11 +46,11 @@
 	<table class="sortable table table-striped table-hover " border="1">
 		<tr class ="success">
 			
+			<th>Last Day To Pickup</th>
 			<th>Company Name</th> 
 			<th>Main Contact</th>
 			<th>Address</th> 
 			<th>Product Description</th>	
-			<th>Last Day To Pickup</th>
 			<th>Phone Number</th>
 			<th>Email</th>
 			<th>Remove </th>		
@@ -60,12 +60,11 @@
 <c:forEach items="${itemList}" var="item">
 	
 		<tr>
-			
+			<td>${item.donation.expirationDate }</td>
 			<td>${item.company.companyName }</td>
 			<td>${item.company.mainContact }</td>
 			<td>${item.company.address } </td>
 			<td>${item.donation.productDescription } </td>
-			<td>${item.donation.expirationDate }</td>
 			<td>${item.company.companyPhoneNumber }</td>
 			<td>${item.company.email } </td>
 		

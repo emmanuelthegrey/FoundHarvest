@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>it is deleted</title>
 </head>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
@@ -38,6 +39,7 @@
 <a href="./DonationList">Back to List</a> |
 <a href="./">Back to home</a> |
 <a href="./resources/DonationForm.html"> add another Donation?</a>
+
 </script>
 </body>
 </html>

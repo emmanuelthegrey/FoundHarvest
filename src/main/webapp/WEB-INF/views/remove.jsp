@@ -3,7 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
+
+<%
+int timeout = 3;
+response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/adminHome");
+%>
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
