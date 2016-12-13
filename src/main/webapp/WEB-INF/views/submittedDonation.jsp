@@ -42,7 +42,7 @@ response.setHeader("Refresh", timeout + "; URL = http://localhost:8080/treasure/
 <script type="./resources/js/bootstrap.min.js" >  </script>
 
 	<h1>Submitted Donation: </h1>
-	<P>Product: "${productDescription }"</P>
+	<P>Thanks for the ${productDescription }!</P>
 <!--  	<p>Publisher: "${publisher }" </p> -->
 <!--	<p>Sales: "${sales }" </p> -->
 	<ol>

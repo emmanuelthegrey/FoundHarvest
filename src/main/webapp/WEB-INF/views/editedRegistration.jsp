@@ -25,7 +25,7 @@
 	<h1>Edit Your Account Information</h1>
 
 	<div>
-		<form name="RegistrationForm" class="form-horizontal" action="../submittedRegistration" onsubmit="return validateForm()" method="post">
+		<form name="RegistrationForm" class="form-horizontal" action="../editedRegistration" onsubmit="return validateForm()" method="post">
 		<fieldset>
 		<legend></legend>
 		
