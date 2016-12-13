@@ -41,7 +41,9 @@ public class HomeController {
 		String password = request.getParameter("password");
 
 		CompanyProfile user = DAO_Profile.checkLogin(username, password);
-
+		if (user == null) {
+			return "error";
+		}
 
 
 		if ((user != null) && user.getUserName().equalsIgnoreCase("admin")){
@@ -77,10 +79,8 @@ public class HomeController {
 			return "donationform";
 
 		}
-		if (user == null) {
-			return "error";
-		}
-		return "";
+		
+		return "error";
 	}
 
 	@RequestMapping(value = "/DonationList", method = RequestMethod.GET)
