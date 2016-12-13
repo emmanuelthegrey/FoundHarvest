@@ -2494,10 +2494,9 @@ table th[class*="col-"] {
   }
 }
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  min-width: 0;
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
 }
 legend {
   display: block;
