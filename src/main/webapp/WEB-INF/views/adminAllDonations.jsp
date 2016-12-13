@@ -19,6 +19,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="./resources/sorttable.js" /></script>
 <title>Donations in the Queue</title>
+<style>
+  .margin-set {
+  margin-left: 50px;
+  margin-right: 50px;
+  }
+</style>
 </head>
 <body>
 
@@ -48,6 +54,7 @@ function printDiv(printableArea) {
 }
 
 </script>
+
 
 	<h1>All Completed Donations</h1>
 	<h2></h2>
@@ -94,6 +101,7 @@ function printDiv(printableArea) {
 				value="Print Receipt" />
 		</div>
 	</div>
+
 
 </body>
 </html>

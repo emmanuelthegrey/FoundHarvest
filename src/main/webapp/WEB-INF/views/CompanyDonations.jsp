@@ -14,6 +14,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Donation List</title>
 <script src="./resources/sorttable.js"/></script>
+<style>
+  .margin-set {
+  margin-left: 50px;
+  margin-right: 50px;
+  }
+</style>
 </head>
 <script>
 	function printDiv(printableArea) {
@@ -41,9 +47,9 @@
           </ul>
   </div>
 </nav>
-
+	<div class = margin-set>
 	<div id="printableArea">
-
+	
 		<h1>${companyName}</h1>
 		<h2>Submitted Donations</h2>
 		<table class="sortable table table-striped table-hover" border="1">
@@ -78,5 +84,6 @@
 	</div>
 	<input type="button" onclick="printDiv('printableArea')"
 		value="Print Reciept" />
+	</div>
 </body>
 </html>

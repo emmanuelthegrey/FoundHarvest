@@ -17,7 +17,6 @@ response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/"
 <script type="./resources/js/bootstrap.min.js">
 
 
-
 The place you're going to doesn't exist!
 
 Try Again!
