@@ -32,7 +32,8 @@
 	<form name="DonationForm" class="form-horizontal" action="./submittedDonation"
 		onSubmit="return validateDonation()" method="POST">
 		<fieldset>
-		<legend>Donation Form</legend>
+		<legend></legend>
+		
 		
 		<div class="form-group">
       <label for="inputdescription" class="col-lg-2 control-label">Product Description</label>
