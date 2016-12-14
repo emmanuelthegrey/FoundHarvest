@@ -79,7 +79,7 @@
 					<td>
 					<form action="removeFromCompanyDonationPage" method="get">
                 	<input type="hidden" name="cancel" value="${item.donation.idCompanyDonation}" />
-                	<input type ="submit" value="Remove">
+                	<input type ="submit" class="btn btn-danger" value="Remove">
            			</form>
 					</td>
 			</c:forEach>
