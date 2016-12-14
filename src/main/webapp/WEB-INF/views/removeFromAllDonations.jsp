@@ -7,7 +7,7 @@
 int timeout = 3;
 response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/adminAllDonations");
 %>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.css">
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

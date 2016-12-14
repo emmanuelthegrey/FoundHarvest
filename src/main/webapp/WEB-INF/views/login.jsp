@@ -3,10 +3,8 @@
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
-<link rel="stylesheet" href="./resources/css/custom.min.css">
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
-<script type="./resources/js/bootstrap.min.js" >  </script>
 	<title>Login Form</title>
 	
 	<style>
@@ -21,7 +19,6 @@ background-color:#f5f5f5;
 </style>
 </head>
 <body>
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -64,6 +61,8 @@ function validateLogin() {
     }
 }
 </script>
+<script type="./resources/js/bootstrap.min.js" >  </script>
+
 
 
 </body>
