@@ -34,6 +34,7 @@
 			<a class="navbar-brand" href="#">Found Harvest</a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
+			<li><a onclick="printDiv('printableArea')"> Print Receipt</a></li>
 			<li><a href="./adminHome">Up Coming Pickups</a></li>
 			<li><a href="./adminRecentDonations">Recent Donations</a></li>
 			<li><a href="./">Log Out</a></li>
