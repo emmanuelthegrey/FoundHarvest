@@ -16,7 +16,8 @@
 			<a class="navbar-brand" href="#">Found Harvest</a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
-
+			<li><a href="./CompanyDonations"> Your Company Donations</a></li>
+			<li><a href="./donationform">Donation Form</a></li>
 			<li><a href="/treasure/">Log in</a></li>
 		</ul>
 	</div>
@@ -125,9 +126,7 @@
 					alert("Username must be filled out");
 					return false;
 				}
-				if (pswrd == "") {
-					alert("Password must be filled out");
-					return false;
+				
 				} else if (validatePhone(pn) == false) {
 					alert("Invalid Phone Number");
 					return false;
