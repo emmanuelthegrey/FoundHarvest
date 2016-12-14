@@ -125,8 +125,9 @@
 				if (un == "") {
 					alert("Username must be filled out");
 					return false;
-				}
-				
+				} if (pswrd == "") {
+					alert("You must retype your password");
+					return false;
 				} else if (validatePhone(pn) == false) {
 					alert("Invalid Phone Number");
 					return false;

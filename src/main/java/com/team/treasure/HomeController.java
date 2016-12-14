@@ -272,7 +272,7 @@ public class HomeController {
 		List<itemsForPickup> items = DAO_Donation.getAllItemsForPickup();
 
 		int companyID = 0;
-
+		
 		//gets the cookie with companyID saves it as companyID
 		Cookie[] cookies = request.getCookies();
 		for (Cookie c : cookies) {
@@ -426,11 +426,7 @@ public class HomeController {
 	cp.setTwitterName(request.getParameter("twitter"));
 	cp.setUserName(request.getParameter("username"));
 	cp.setCompanyID(Integer.parseInt(request.getParameter("companyID")));
-	
-	//checks if they've altered the password before saving
-	if (request.getParameter("password") != "") {
 	cp.setPassword(request.getParameter("password"));
-	}
 	
 	DAO_Profile.updateCompanyProfile(cp);
 	

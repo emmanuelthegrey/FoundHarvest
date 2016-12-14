@@ -38,10 +38,10 @@ function validateLogin() {
     if (un === "") {
         alert("Username must be filled out");
         return false;
-    }else if(pswrd === "") {
+    }/*else if(pswrd === "") {
     	alert("Password must be filled out");
     	return false;
-    }
+    }*/
 }
 </script>
 
