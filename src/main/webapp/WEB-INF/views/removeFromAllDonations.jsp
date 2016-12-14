@@ -5,7 +5,7 @@
 <head>
 <%
 int timeout = 3;
-response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/adminAllDonations");
+response.setHeader("Refresh", timeout + "; URL =./adminAllDonations");
 %>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
 

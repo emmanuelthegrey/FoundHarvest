@@ -5,7 +5,7 @@
 <head>
 <%
 int timeout = 4;
-response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/CompanyDonations");
+response.setHeader("Refresh", timeout + "; URL =./CompanyDonations");
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 

@@ -5,7 +5,7 @@
 <head>
 <%
 int timeout = 3;
-response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/");
+response.setHeader("Refresh", timeout + "; URL =/");
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Whoops!</title>
