@@ -6,6 +6,14 @@
 <script type="./resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
+
+<style>
+.grey-color {
+background-color:#f5f5f5;
+}
+
+
+</style>
 </head>
 
 
@@ -28,7 +36,7 @@
 
 
 	<h1>Submit Donation Here</h1>
-
+<div class="container grey-color">
 	<form name="DonationForm" class="form-horizontal" action="./submittedDonation"
 		onSubmit="return validateDonation()" method="POST">
 		<fieldset>
@@ -87,6 +95,7 @@
 		 
 			</fieldset>
 	</form>
+	</div>
 
 	<script>
 	

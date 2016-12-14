@@ -3,9 +3,19 @@
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.css">
+<link rel="stylesheet" href="./resources/css/custom.min.css">
+
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">
 <script type="./resources/js/bootstrap.min.js" >  </script>
 	<title>Login Form</title>
+	
+	<style>
+.grey-color {
+background-color:#f5f5f5;
+}
+
+
+</style>
 </head>
 <body>
 
@@ -17,9 +27,12 @@
       </div>
    
 </nav>
-
+<div class="container grey-color">
 <h1>Log in</h1>
+
+<div class="row" >
       
+      <div class="col-lg-6" >
 <form name="loginForm" class="form-horizontal" action="./login" onSubmit="return validateLogin()" method ="POST">
 	
 	<input type="text" name="username" placeholder="Username" required><br>
@@ -28,7 +41,10 @@
 	
 	<a href="./resources/registration.html"> First time donating? Sign up here!</a>
 </form>
+</div>
 
+</div>
+</div>
 <script>
 function validateLogin() {
     

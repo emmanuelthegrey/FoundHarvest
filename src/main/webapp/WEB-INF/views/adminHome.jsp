@@ -10,7 +10,7 @@
 <html>
 <head>
 
-<style></style>
+
 
 
 
@@ -44,7 +44,7 @@
 	<div class = "margin-set">
 	<h1>Upcoming Pick Ups! </h1>
 	<table class="sortable table table-striped table-hover " border="1">
-		<tr class ="success">
+		<tr class ="info">
 			
 			<th>Last Day To Pickup</th>
 			<th>Company Name</th> 

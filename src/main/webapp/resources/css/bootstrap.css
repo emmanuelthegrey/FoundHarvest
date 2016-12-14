@@ -42,6 +42,7 @@ video {
   display: inline-block;
   vertical-align: baseline;
 }
+
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -1590,6 +1591,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  background-color: #f5f5f5;
 }
 @media (min-width: 768px) {
   .container {
@@ -5821,6 +5823,9 @@ button.list-group-item-danger.active:focus {
   padding-bottom: 75%;
 }
 .well {
+
+	position: realtive;
+
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
