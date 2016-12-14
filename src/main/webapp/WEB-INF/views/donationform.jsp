@@ -36,11 +36,11 @@ background-color:#f5f5f5;
 
 
 
-	<h1>Submit Donation Here</h1>
+	
 <div class="container grey-color">
+<h1>Submit Donation Here</h1>
 	<form name="DonationForm" class="form-horizontal" action="./submittedDonation"
 		onSubmit="return validateDonation()" method="POST">
-		<fieldset>
 		<legend></legend>
 		
 		
@@ -94,7 +94,6 @@ background-color:#f5f5f5;
 		 
 		
 		 
-			</fieldset>
 	</form>
 	</div>
 
