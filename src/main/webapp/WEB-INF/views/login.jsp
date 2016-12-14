@@ -13,8 +13,11 @@
 .grey-color {
 background-color:#f5f5f5;
 }
-
-
+.margin-set { 
+	margin-left:25%;
+	margin-right:25%;
+	text-align: center;
+}	
 </style>
 </head>
 <body>
@@ -27,8 +30,8 @@ background-color:#f5f5f5;
       </div>
    
 </nav>
-<div class="container grey-color">
-<h1>Log in</h1>
+<div class="grey-color margin-set">
+<h1>Login</h1>
 
 <div class="row" >
       
@@ -37,8 +40,9 @@ background-color:#f5f5f5;
 	
 	<input type="text" name="username" placeholder="Username" required><br>
 	<input type="password" name="password" placeholder="Password" required><br>
-	<input type="submit" value ="Login"> <br>
 	
+	<br> <input type="submit" value ="Login"> <br>
+	<br>
 	<a href="./resources/registration.html"> First time donating? Sign up here!</a>
 </form>
 </div>
