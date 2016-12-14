@@ -62,7 +62,7 @@ function printDiv(printableArea) {
 	<div id="printableArea">
 		
 			<table class="sortable table table-striped table-hover" border="1">
-				<tr class="success">
+				<tr class="danger">
 				
 					<th>Confirmed Date</th>
 					<th>Company Name</th>
@@ -96,8 +96,7 @@ function printDiv(printableArea) {
 						</td>
 				</c:forEach>
 			</table>
-			<input type="button" onclick="printDiv('printableArea')"
-				value="Print Receipt" />
+			
 		</div>
 	</div>
 
