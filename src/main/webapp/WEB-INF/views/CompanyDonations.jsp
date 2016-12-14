@@ -56,7 +56,7 @@
 		<h1>${companyName}</h1>
 		<h2>Submitted Donations</h2>
 		<table class="sortable table table-striped table-hover" border="1">
-			<tr class ="success">
+			<tr class ="danger">
 				<th>Date Submitted</th>
 				<th>Donation Description</th>
 				<th>Weight of Donation</th>
@@ -85,8 +85,6 @@
 			</c:forEach>
 		</table>
 	</div>
-	<input type="button" onclick="printDiv('printableArea')"
-		value="Print Reciept" />
 	</div>
 </body>
 </html>
