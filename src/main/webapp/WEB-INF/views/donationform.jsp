@@ -110,19 +110,16 @@ background-color:#f5f5f5;
 
 	  	var reg = /^\d+$/;
 		
-	  	
-	  	
 	  	if (pd == "") {
 			alert("Product Description must be filled out");
 			
 			return false;
-		} else if (reg.test(ed) === false) {
-			alert("Please enter in a number");
+		} else if (reg.test(ed) === false){
+			alert("Please enter in a number for how many days we have to pick it up");
 			
 			return false;
-		}else if (reg.test(ew) === false) {
-			alert("Please enter in a number");
-			
+		}else if ((reg.test(ew) === false) || (ew < 200)) {
+			alert("We only pick up donations over 200 lbs, please consider dropping your donation off at our location");
 			return false;
 			
 		}
@@ -139,7 +136,7 @@ background-color:#f5f5f5;
 			var packaged = document.getElementsByName('packaged');
 			
 			if (packaged[1].checked == true) {
-				alert("We cannot pick this item up");
+				alert("We only pick up items that are packaged");
 				
 				return false;
 				}
