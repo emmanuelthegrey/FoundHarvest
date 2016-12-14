@@ -41,8 +41,9 @@ response.setHeader("Refresh", timeout + "; URL = http://localhost:8080/treasure/
 
 <script type="./resources/js/bootstrap.min.js" >  </script>
 
-	<h1>Submitted Donation: </h1>
+	<h1>Submitted Donation! </h1>
 	<P>Thanks for the ${productDescription }!</P>
+	<P>We're sending you back to the donation page in 3 seconds!</P>
 <!--  	<p>Publisher: "${publisher }" </p> -->
 <!--	<p>Sales: "${sales }" </p> -->
 	<ol>
@@ -51,6 +52,6 @@ response.setHeader("Refresh", timeout + "; URL = http://localhost:8080/treasure/
 	
 <!--  <a href="./list">Back to List</a> -->
 <!-- <a href="./">Back to home</a> -->
-<a href="./donationform"> add another Donation?</a>
+<a href="./donationform"> Add another Donation?</a>
 </body>
 </html>
