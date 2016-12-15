@@ -8,9 +8,8 @@
 
 <%
 int timeout = 3;
-response.setHeader("Refresh", timeout + "; URL =http://localhost:8080/treasure/adminHome");
+response.setHeader("Refresh", timeout + "; URL =./adminHome");
 %>
-<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 
 
 <link rel="stylesheet" href="./resources/css/bootstrap-theme.min.css">

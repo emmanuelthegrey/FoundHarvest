@@ -12,10 +12,8 @@
 background-color:#f5f5f5;
 }
 
-
 </style>
 </head>
-
 
 <body>
 
@@ -32,28 +30,22 @@ background-color:#f5f5f5;
   </div>
 </nav>
 
-
-
-
-
-	<h1>Submit Donation Here</h1>
 <div class="container grey-color">
 
+<h1>Submit Donation Here</h1>
 	<form name="DonationForm" class="form-horizontal" action="./submittedDonation"
 		onSubmit="return validateDonation()" method="POST">
 		
 		Donation Requirements: <br>
 			<ul>
 		<li>Donation pick-up routes currently only service <strong>Oakland, McComb and Wayne counties </strong></li>
-		<li>Donation pick-up package size needs to<strong>weight 200lbs or more</strong>. </li>
+		<li>Donation pick-up package size needs to <strong>weight 200lbs or more</strong>. </li>
 		<li>If your donation is outside these counties and weight requirements please contact us directly</li>
 			</ul>
 		
 		<fieldset>
-		
-		
+				
 		<legend> </legend>
-		
 		
 		<div class="form-group">
       <label for="inputdescription" class="col-lg-2 control-label">Product Description</label>
@@ -100,12 +92,7 @@ background-color:#f5f5f5;
 			 <input type="submit" class="btn btn-default" value="Submit">
 			 </div>
 			 </div>
-		
-		 
-		 
-		
-		 
-			</fieldset>
+		</fieldset> 
 	</form>
 	</div>
 
@@ -122,19 +109,16 @@ background-color:#f5f5f5;
 
 	  	var reg = /^\d+$/;
 		
-	  	
-	  	
 	  	if (pd == "") {
 			alert("Product Description must be filled out");
 			
 			return false;
-		} else if (reg.test(ed) === false) {
-			alert("Please enter in a number");
+		} else if (reg.test(ed) === false){
+			alert("Please enter in a number for how many days we have to pick it up");
 			
 			return false;
-		}else if (reg.test(ew) === false) {
-			alert("Please enter in a number");
-			
+		}else if ((reg.test(ew) === false) || (ew < 200)) {
+			alert("We only pick up donations over 200 lbs, please consider dropping your donation off at our location");
 			return false;
 			
 		}
@@ -151,7 +135,7 @@ background-color:#f5f5f5;
 			var packaged = document.getElementsByName('packaged');
 			
 			if (packaged[1].checked == true) {
-				alert("We cannot pick this item up");
+				alert("We only pick up items that are packaged");
 				
 				return false;
 				}
