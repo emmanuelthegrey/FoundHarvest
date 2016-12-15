@@ -38,10 +38,21 @@ background-color:#f5f5f5;
 
 	<h1>Submit Donation Here</h1>
 <div class="container grey-color">
+
 	<form name="DonationForm" class="form-horizontal" action="./submittedDonation"
 		onSubmit="return validateDonation()" method="POST">
+		
+		Donation Requirements: <br>
+			<ul>
+		<li>Donation pick-up routes currently only service <strong>Oakland, McComb and Wayne counties </strong></li>
+		<li>Donation pick-up package size needs to<strong>weight 200lbs or more</strong>. </li>
+		<li>If your donation is outside these counties and weight requirements please contact us directly</li>
+			</ul>
+		
 		<fieldset>
-		<legend></legend>
+		
+		
+		<legend> </legend>
 		
 		
 		<div class="form-group">

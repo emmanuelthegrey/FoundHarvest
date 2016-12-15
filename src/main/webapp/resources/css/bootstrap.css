@@ -175,7 +175,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 fieldset {
   border: 1px solid #c0c0c0;
-  margin: 0 2px;
+  margin: 0 10px;
   padding: 0.35em 0.625em 0.75em;
 }
 legend {
@@ -1115,10 +1115,10 @@ a:focus {
   outline-offset: -2px;
 }
 figure {
-  margin: 0;
+  margin: 20;
 }
 img {
-  vertical-align: middle;
+  vertical-align: right;
 }
 .img-responsive,
 .thumbnail > img,
@@ -2496,7 +2496,7 @@ table th[class*="col-"] {
   }
 }
 fieldset {
-  border: 1px solid #c0c0c0;
+  /*border: 1px solid #c0c0c0;*/
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -2505,9 +2505,9 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: 20px;
-  font-size: 21px;
+  font-size: 16px;
   line-height: inherit;
-  color: #333333;
+  color: red;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 }
